@@ -3,7 +3,7 @@ export default function Stats() {
     <section className="stats">
       
       <div className="stat">
-        <h2>27+</h2>
+        <h2>16+</h2>
         <p>YRS EXPERIENCE</p>
       </div>
 

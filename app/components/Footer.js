@@ -5,7 +5,7 @@ export default function Footer() {
 
       {/* CTA */}
       <Link href="/book-consultation" className="footer-cta">
-        Discuss your engagement →
+        Discuss Your Engagement →
       </Link>
 
       {/* FOOTER CONTENT */}
@@ -14,8 +14,8 @@ export default function Footer() {
         {/* LEFT */}
         <div>
           <h2 className="footer-logo">SCS</h2>
-          <h3>Sanghvi Consultancy Services</h3>
-          <p className="footer-sub">CHARTERED ACCOUNTANTS</p>
+          <h3>SANGHVI CONSULTANCY SERVICES</h3>
+          <p className="footer-sub">Chartered Accountants</p>
 
           <p className="footer-desc">
             Modern Chartered Accountancy for businesses that move fast.
@@ -45,16 +45,16 @@ export default function Footer() {
         {/* RIGHT */}
         <div>
           <p className="footer-heading">REACH US</p>
-          <p>contact@sanghviconsultancy.com</p>
-          <p>+91 98765 43210</p>
-          <p>Ahmedabad, Gujarat</p>
+          <p>sanghviconsultancyservices@gmail.com</p>
+          <p>+91 8247564764</p>
+          <p>Secunderabad, Telangana</p>
         </div>
 
       </div>
 
       {/* BOTTOM */}
       <div className="footer-bottom-line">
-        © 2026 Sanghvi Consultancy Services
+        © 2009 Sanghvi Consultancy Services
       </div>
 
     </footer>

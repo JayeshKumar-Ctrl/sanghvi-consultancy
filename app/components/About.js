@@ -16,7 +16,7 @@ export default function About() {
           </p>
 
           <div className="about-points">
-            <div className="point">✔<strong>25+</strong> years experience</div>
+            <div className="point">✔<strong>16+</strong> years experience</div>
             <div className="point">✔<strong>1200+</strong> clients served</div>
             <div className="point">✔ AI-powered accounting</div>
             <div className="point">✔ Gujarat-based expertise</div>

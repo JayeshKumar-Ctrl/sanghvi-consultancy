@@ -214,15 +214,13 @@ export default function Scanner() {
 
           <p className="preview-title">
 
-            Gujarati ledger ·
-            12 pages
+            Gujarati ledger 
 
           </p>
 
           <p className="preview-meta">
 
-            Date · Particulars ·
-            Debit · Credit · Balance
+            Debit · Credit · Balance · 
 
           </p>
 
@@ -235,8 +233,7 @@ export default function Scanner() {
 
           <p className="preview-meta">
 
-            100% English ·
-            numerals normalised
+            100% English 
 
           </p>
 

@@ -11,11 +11,6 @@ import { Toaster } from "react-hot-toast";
 
 import Script from "next/script";
 
-<meta
-  name="google-site-verification"
-  content="google-site-verification: googled67a1a7b905aee7c.html"
-/>
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,6 +28,10 @@ export const metadata: Metadata = {
 
   description:
     "AI Powered Financial Platform",
+
+  verification: {
+    google: "d67a1a7b905aee7c",
+  },
 
 };
 

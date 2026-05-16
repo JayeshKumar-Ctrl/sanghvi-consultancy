@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "AI Powered Financial Platform",
 
   verification: {
-    google: "d67a1a7b905aee7c",
+    google: "ag7859UvtMhRv3kVwSDYxqURvEG1D5gr0A6MNrEIFnA",
   },
 
 };

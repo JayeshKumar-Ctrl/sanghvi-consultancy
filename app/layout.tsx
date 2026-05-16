@@ -24,10 +24,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 
   title:
-    "Sanghvi Consultancy",
+  "Sanghvi Consultancy Services | AI Accounting & Financial Solutions",
 
   description:
-    "AI Powered Financial Platform",
+  "Professional AI-powered accounting, GST filing, tax consultancy, business registration and financial services platform.",
 
   verification: {
     google:

@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import Image from "next/image";
+
 import {
   useEffect,
   useState,
@@ -197,9 +199,15 @@ export default function Navbar() {
         }}
       >
 
-        <div className="logo-circle">
-          SCS
-        </div>
+        <Image
+          src="/logo.png"
+          alt="Sanghvi Consultancy"
+          width={125}
+          height={125}
+          className="object-contain"
+
+        />
+        
 
         <div>
 

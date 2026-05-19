@@ -1,6 +1,6 @@
 import Footer from "@/app/components/Footer";
 
-export default function FEMARBICompliance() {
+export default function CompanyRegistration() {
 
   return (
 
@@ -44,7 +44,7 @@ export default function FEMARBICompliance() {
               marginBottom: "25px",
             }}
           >
-            FEMA & RBI Compliance
+            Company Registration
           </h1>
 
           <p
@@ -54,22 +54,25 @@ export default function FEMARBICompliance() {
               color: "#d8d8d8",
             }}
           >
-            Expert FEMA and RBI compliance
-            solutions for foreign investments,
-            NRI transactions, international
-            business operations and regulatory
-            approvals.
+            Professional company registration
+            assistance for startups, private
+            limited companies, LLPs and growing
+            businesses with complete legal and
+            compliance support.
           </p>
 
         </div>
 
-        {/* CONTENT */}
+        {/* CONTENT BOX */}
 
         <div
           style={{
             background: "white",
+
             borderRadius: "35px",
+
             padding: "70px",
+
             boxShadow:
               "0 20px 50px rgba(0,0,0,0.08)",
           }}
@@ -85,7 +88,7 @@ export default function FEMARBICompliance() {
               fontWeight: "800",
             }}
           >
-            What is FEMA & RBI Compliance?
+            What is Company Registration?
           </h2>
 
           <p
@@ -96,15 +99,14 @@ export default function FEMARBICompliance() {
               marginBottom: "60px",
             }}
           >
-            FEMA & RBI Compliance ensures
-            businesses and individuals follow
-            regulations related to foreign
-            exchange, overseas investments,
-            NRI transactions and international
-            financial operations.
+            Company Registration is the legal
+            process of incorporating a business
+            entity under the Ministry of Corporate
+            Affairs (MCA) to operate legally with
+            proper compliance and recognition.
           </p>
 
-          {/* SERVICES INCLUDED */}
+          {/* FEATURES */}
 
           <h2
             style={{
@@ -114,7 +116,7 @@ export default function FEMARBICompliance() {
               fontWeight: "800",
             }}
           >
-            Services Included
+            Registration Features
           </h2>
 
           <div
@@ -128,12 +130,12 @@ export default function FEMARBICompliance() {
           >
 
             {[
-              "FDI Compliance",
-              "NRI Investment Compliance",
-              "Overseas Transactions",
-              "RBI Reporting",
-              "Foreign Remittance Support",
-              "International Business Advisory",
+              "Private Limited Registration",
+              "LLP Registration",
+              "Startup Incorporation",
+              "DIN & DSC Assistance",
+              "MCA Filing Support",
+              "Professional Documentation",
             ].map((item, index) => (
 
               <div
@@ -171,12 +173,12 @@ export default function FEMARBICompliance() {
           >
 
             {[
-              "Smooth international transactions",
-              "Avoid RBI penalties",
-              "Proper legal compliance",
-              "Secure foreign investments",
-              "Business expansion support",
-              "Professional regulatory guidance",
+              "Legal business identity",
+              "Limited liability protection",
+              "Better business credibility",
+              "Easy funding opportunities",
+              "Government recognition",
+              "Long-term business growth",
             ].map((item, index) => (
 
               <div
@@ -200,7 +202,7 @@ export default function FEMARBICompliance() {
               fontWeight: "800",
             }}
           >
-            Risks Without Compliance
+            Risks Without Registration
           </h2>
 
           <div
@@ -214,10 +216,10 @@ export default function FEMARBICompliance() {
           >
 
             {[
-              "RBI penalties",
-              "Foreign transaction restrictions",
-              "Legal notices",
-              "International business risks",
+              "Legal compliance issues",
+              "Business credibility loss",
+              "Limited expansion opportunities",
+              "Funding & banking difficulties",
             ].map((item, index) => (
 
               <div
@@ -247,15 +249,25 @@ export default function FEMARBICompliance() {
               style={{
                 background:
                   "linear-gradient(135deg,#003b2f,#001f1a)",
+
                 color: "white",
+
                 padding: "18px 42px",
+
                 borderRadius: "50px",
+
                 textDecoration: "none",
+
                 fontSize: "20px",
+
                 fontWeight: "700",
+
                 border: "2px solid #003b2f",
+
                 boxShadow:
                   "0 10px 30px rgba(0,0,0,0.12)",
+
+                transition: "0.3s",
               }}
             >
               Book Consultation
@@ -267,13 +279,22 @@ export default function FEMARBICompliance() {
               rel="noopener noreferrer"
               style={{
                 background: "transparent",
+
                 color: "#003b2f",
+
                 padding: "18px 42px",
+
                 borderRadius: "50px",
+
                 textDecoration: "none",
+
                 fontSize: "20px",
+
                 fontWeight: "700",
+
                 border: "2px solid #003b2f",
+
+                transition: "0.3s",
               }}
             >
               WhatsApp Now

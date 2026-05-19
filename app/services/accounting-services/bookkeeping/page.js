@@ -123,56 +123,6 @@ export default function BookkeepingPage() {
 
           </div>
 
-          {/* DOCUMENTS */}
-
-          <div
-            style={{
-              marginBottom: "70px",
-            }}
-          >
-
-            <h2
-              style={{
-                fontSize: "52px",
-                color: "#062b1f",
-                fontWeight: "800",
-                marginBottom: "35px",
-              }}
-            >
-              Documents Required
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "repeat(auto-fit,minmax(280px,1fr))",
-                gap: "22px",
-              }}
-            >
-
-              {[
-                "Purchase Invoices",
-                "Sales Invoices",
-                "Bank Statements",
-                "Expense Bills",
-                "GST Details",
-                "Payment Records",
-              ].map((item, index) => (
-
-                <div
-                  key={index}
-                  className="premium-white-card"
-                >
-                  {item}
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
           {/* BENEFITS */}
 
           <div

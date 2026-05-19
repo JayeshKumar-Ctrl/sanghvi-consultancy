@@ -101,13 +101,6 @@ export default function CompliancePage() {
 
               {
                 title:
-                  "FEMA & RBI Compliance",
-                link:
-                  "/services/compliance/fema-rbi-compliance",
-              },
-
-              {
-                title:
                   "Annual Filings",
                 link:
                   "/services/compliance/annual-filings",

@@ -124,56 +124,6 @@ export default function TallyMigrationPage() {
 
           </div>
 
-          {/* DOCUMENTS */}
-
-          <div
-            style={{
-              marginBottom: "70px",
-            }}
-          >
-
-            <h2
-              style={{
-                fontSize: "52px",
-                color: "#062b1f",
-                fontWeight: "800",
-                marginBottom: "35px",
-              }}
-            >
-              Requirements
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "repeat(auto-fit,minmax(280px,1fr))",
-                gap: "22px",
-              }}
-            >
-
-              {[
-                "Existing Tally Backup",
-                "Company Data Files",
-                "Ledger Details",
-                "GST Configuration",
-                "User Credentials",
-                "Software Version Details",
-              ].map((item, index) => (
-
-                <div
-                  key={index}
-                  className="premium-white-card"
-                >
-                  {item}
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
           {/* BENEFITS */}
 
           <div

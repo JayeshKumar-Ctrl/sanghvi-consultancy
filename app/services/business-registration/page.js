@@ -94,6 +94,14 @@ export default function BusinessRegistrationPage() {
             {[
               {
                 title:
+                  "Company Registration",
+                link:
+                  "/services/business-registration/company-registration",
+              },
+
+
+              {
+                title:
                   "GST Registration",
                 link:
                   "/services/business-registration/gst-registration",

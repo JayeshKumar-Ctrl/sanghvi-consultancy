@@ -121,56 +121,6 @@ export default function PMSMiniPMS() {
 
           </div>
 
-          {/* DOCUMENTS */}
-
-          <div
-            style={{
-              marginBottom: "70px",
-            }}
-          >
-
-            <h2
-              style={{
-                fontSize: "52px",
-                color: "#062b1f",
-                fontWeight: "800",
-                marginBottom: "35px",
-              }}
-            >
-              Documents Required
-            </h2>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns:
-                  "repeat(auto-fit,minmax(280px,1fr))",
-                gap: "22px",
-              }}
-            >
-
-              {[
-                "PAN Card",
-                "Aadhaar Card",
-                "Bank Account Details",
-                "Income Proof",
-                "KYC Documents",
-                "Investment Declaration",
-              ].map((item, index) => (
-
-                <div
-                  key={index}
-                  className="premium-white-card"
-                >
-                  {item}
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
           {/* BENEFITS */}
 
           <div

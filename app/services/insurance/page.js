@@ -119,6 +119,20 @@ export default function InsurancePage() {
                   "/services/insurance/term-insurance",
               },
 
+              {
+                title:
+                  "Corporate Insurance (for employees)",
+                link:
+                  "/services/insurance/corporate-insurance",
+              },
+
+              {
+                title:
+                  "Factory Insurance",
+                link:
+                  "/services/insurance/factory-insurance",
+              },
+
             ].map((service, index) => (
 
               <Link

@@ -14,6 +14,38 @@ export default function Home() {
       <Navbar />
       <Hero />
       <NewsSection />
+      {/* SERVICES HEADING */}
+      <div
+        style={{
+          width: "90%",
+          maxWidth: "1400px",
+          margin: "-10px auto -30px auto",
+        }}
+      >
+
+        <h1
+          style={{
+            fontSize: "72px",
+            fontWeight: "800",
+            color: "#062b1f",
+            marginBottom: "20px",
+            lineHeight: "1.1",
+          }}
+        >
+          Services
+        </h1>
+
+        <p
+          style={{
+            fontSize: "28px",
+            color: "#4a4a4a",
+            lineHeight: "1.8",
+            maxWidth: "900px",
+          }}
+        >
+          Professional financial, taxation, compliance and advisory services designed for individuals, startups and growing businesses.
+        </p>
+      </div>
       <Services />
       <SIPCalculator />
       <Scanner />

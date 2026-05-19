@@ -67,7 +67,9 @@ const services = [
       "Health Insurance",
       "Life Insurance",
       "Motor Insurance",
-      "Term Insurance"
+      "Term Insurance",
+      "Corporate Insurance",
+      "Factory Insurance"
     ]
   },
 
@@ -90,6 +92,7 @@ const services = [
     title: "Business Registration",
     icon: Building2,
     items: [
+      "Company Registration",
       "GST Registration",
       "Trade License",
       "Labour License",
@@ -107,7 +110,6 @@ const services = [
     icon: Scale,
     items: [
       "ROC Compliance",
-      "FEMA & RBI Compliance",
       "Annual Filings",
       "Tax Notices & Appeals"
     ]

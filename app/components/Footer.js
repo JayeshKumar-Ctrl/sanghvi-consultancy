@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer id="contact" className="footer">
@@ -13,10 +15,24 @@ export default function Footer() {
 
         {/* LEFT */}
         <div>
-          <h2 className="footer-logo">SCS</h2>
+          <Image
+                    src="/logo.png"
+                    alt="Sanghvi Consultancy"
+                    width={125}
+                    height={125}
+                    className="object-contain"
+          
+                  />
           <h3>SANGHVI CONSULTANCY SERVICES</h3>
-          <p className="footer-sub">Chartered Accountants</p>
-
+          <p
+            style={{
+              fontSize: "14px",
+              fontWeight: "500",
+              marginTop: "0px",
+            }}
+          >
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Trusted Business and Financial Partner
+          </p>
           <p className="footer-desc">
             Modern Chartered Accountancy for businesses that move fast.
             Audit, tax, advisory, and AI-assisted bookkeeping — all under one trusted roof.

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 export default function SignupPage() {
 
@@ -46,6 +47,12 @@ export default function SignupPage() {
 
       console.log(data);
 
+      if (res.ok) {
+
+        window.location.href = "/login";
+
+      }
+
     } catch (error) {
 
       console.log(error);
@@ -67,9 +74,14 @@ export default function SignupPage() {
 
           <div className="auth-logo">
 
-            <div className="auth-logo-circle">
-              SCS
-            </div>
+            <Image
+                src="/logo.png"
+                alt="Sanghvi Consultancy"
+                width={125}
+                height={125}
+                className="object-contain"
+              
+              />
 
             <div>
               <h3>SANGHVI</h3>

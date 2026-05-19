@@ -160,6 +160,17 @@ export default function SIPCalculator() {
 
       {/* TOP CARD */}
 
+      <h1 className="sip-title">
+        SIP Calculator
+      </h1>
+
+      <p className="sip-desc">
+
+        Plan your monthly SIP and
+        visualize long-term growth.
+
+      </p>
+
       <div className="sip-top-card">
 
         <p className="small-label">
@@ -176,17 +187,6 @@ export default function SIPCalculator() {
         </h2>
 
       </div>
-
-      <h1 className="sip-title">
-        SIP Calculator
-      </h1>
-
-      <p className="sip-desc">
-
-        Plan your monthly SIP and
-        visualize long-term growth.
-
-      </p>
 
       <div className="sip-container">
 

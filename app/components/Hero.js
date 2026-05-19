@@ -13,18 +13,32 @@ export default function Hero() {
         {/* LEFT TEXT */}
         <div className="hero-text">
 
-          <h1>
-            Old-School Discipline.
-            <br />
-            <span className="italic">
-              New-School Tools.
-            </span>
+          <h1
+            style={{
+              fontSize: "5.2rem",
+              lineHeight: "1.1",
+              fontWeight: "800",
+              color: "#111",
+              marginBottom: "30px",
+            }}
+          >
+            Commitment
           </h1>
 
-          <p className="desc">
-            Founded in Hyderabad, Sanghvi Consultancy Services has audited
-            family businesses, listed companies and global subsidiaries alike.
-            We combine traditional expertise with modern AI-powered tools.
+          <p
+            className="desc"
+            style={{
+              fontSize: "2rem",
+              lineHeight: "1.8",
+              color: "#4a4a4a",
+              maxWidth: "850px",
+              fontWeight: "500",
+            }}
+          >
+            We combine technical expertise with clear communication,
+            empowering clients to make informed decisions with confidence.
+            We uphold the highest level of professionalism and reliability
+            in every engagement.
           </p>
 
         </div>
@@ -44,46 +58,6 @@ export default function Hero() {
 
       {/* =========================
           SECTION 2
-      ========================== */}
-
-      <div className="hero-features">
-
-        <div className="feature-card">
-          <div className="icon">✓</div>
-          <h3>Senior partner oversight</h3>
-          <p>
-            Every engagement is reviewed by a qualified Chartered Accountant.
-          </p>
-        </div>
-
-        <div className="feature-card">
-          <div className="icon">₹</div>
-          <h3>Transparent fees</h3>
-          <p>
-            Clear pricing before work begins. No surprises.
-          </p>
-        </div>
-
-        <div className="feature-card">
-          <div className="icon">⚙️</div>
-          <h3>In-house tech stack</h3>
-          <p>
-            Secure cloud tools for documents, reports, and compliance.
-          </p>
-        </div>
-
-        <div className="feature-card">
-          <div className="icon">🌐</div>
-          <h3>Language expertise</h3>
-          <p>
-            Gujarati, Hindi & English support for seamless communication.
-          </p>
-        </div>
-
-      </div>
-
-      {/* =========================
-          SECTION 3
       ========================== */}
 
       <div className="hero-big-image-box">

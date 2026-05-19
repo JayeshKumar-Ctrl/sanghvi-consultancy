@@ -110,7 +110,7 @@ export default function Scanner() {
 
           <h1>
 
-            Scan a Gujarati ledger.
+            Scan a Manual Invoice.
 
             <br />
 
@@ -214,7 +214,7 @@ export default function Scanner() {
 
           <p className="preview-title">
 
-            Gujarati ledger 
+            Manual Invoice 
 
           </p>
 

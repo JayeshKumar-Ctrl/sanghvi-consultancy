@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 export default function LoginPage() {
 
@@ -85,9 +86,14 @@ export default function LoginPage() {
 
           <div className="auth-logo">
 
-            <div className="auth-logo-circle">
-              SCS
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Sanghvi Consultancy"
+              width={125}
+              height={125}
+              className="object-contain"
+
+            />
 
             <div>
               <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SANGHVI</h3>

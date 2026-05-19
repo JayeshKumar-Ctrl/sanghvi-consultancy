@@ -114,14 +114,6 @@ export default function NewsSection() {
 
             </div>
 
-            <button
-              className="refresh-btn"
-
-              onClick={fetchNews}
-            >
-              ↻ Refresh
-            </button>
-
           </div>
 
           <div className="news-scroll">
@@ -192,14 +184,6 @@ export default function NewsSection() {
               </div>
 
             </div>
-
-            <button
-              className="refresh-btn"
-
-              onClick={fetchMarketData}
-            >
-              ↻ Refresh
-            </button>
 
           </div>
 

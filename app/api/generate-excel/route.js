@@ -100,7 +100,7 @@ export async function POST(req) {
 
     const filePath =
       path.join(
-        process.cwd(),
+        "/tmp",
         fileName
       );
 

@@ -25,6 +25,7 @@ from "@/lib/generateExcel";
 
 const genAI =
   new GoogleGenerativeAI(
+
     process.env.GEMINI_API_KEY
   );
 
@@ -118,6 +119,11 @@ export async function POST(req) {
     });
 
     // GEMINI MODEL
+    
+    console.log(
+      "KEY:",
+      process.env.GEMINI_API_KEY
+    );
 
     const model =
       genAI.getGenerativeModel({

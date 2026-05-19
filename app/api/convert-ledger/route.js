@@ -119,7 +119,7 @@ export async function POST(req) {
     });
 
     // GEMINI MODEL
-    
+
     console.log(
       "KEY:",
       process.env.GEMINI_API_KEY
@@ -416,11 +416,7 @@ FORMAT:
 
     // TEMP DIRECTORY
 
-    const tempDir =
-      path.join(
-        process.cwd(),
-        "temp"
-      );
+    const tempDir = "/tmp";
 
     // CREATE TEMP FOLDER
 

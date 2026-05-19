@@ -418,19 +418,6 @@ FORMAT:
 
     const tempDir = "/tmp";
 
-    // CREATE TEMP FOLDER
-
-    if (
-      !fs.existsSync(tempDir)
-    ) {
-
-      fs.mkdirSync(
-        tempDir,
-        { recursive: true }
-      );
-
-    }
-
     // FILE NAME
 
     const excelFileName =

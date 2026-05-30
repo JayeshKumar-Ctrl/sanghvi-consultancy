@@ -46,6 +46,7 @@ a {
 .navbar{
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 18px 50px;
@@ -68,6 +69,7 @@ a {
 
 .logo{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
@@ -86,6 +88,7 @@ a {
   color: white;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 
@@ -105,6 +108,7 @@ a {
 
 .nav-links{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 25px;
   margin-left: 10px;
@@ -122,6 +126,7 @@ a {
 
 .nav-buttons{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 18px;
   margin-left: 20px;
@@ -145,6 +150,7 @@ a {
   transition: all 0.3s ease;
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   
@@ -236,7 +242,7 @@ a {
 }
 
 .hero-text h1 {
-  font-size: 92px;
+  font-size: clamp(3rem, 8vw, 92px);
 
   line-height: 1;
 
@@ -358,13 +364,13 @@ a {
 }
 
 .desc {
-  font-size: 24px;
+  font-size: clamp(1rem, 3vw, 24px);
 
   line-height: 1.6;
 
   color: #555;
 
-  max-width: 700px;
+  max-width: 100%;
 }
 
 .hero-features {
@@ -493,6 +499,14 @@ a {
   margin: auto;
 }
 
+@media (max-width: 768px) {
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 .service-card {
   background: linear-gradient(
     135deg,
@@ -526,6 +540,7 @@ a {
 
 .service-top {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 
@@ -541,6 +556,7 @@ a {
   background: rgba(255,255,255,0.08);
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
@@ -556,14 +572,19 @@ a {
 }
 
 .service-card h3 {
-  font-size: 20px;
+  font-size: clamp(1.2rem, 4vw, 20px);
   margin-bottom: 24px;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 .service-list {
   padding-left: 18px;
 
   display: flex;
+
+  flex-wrap: wrap;
+
   flex-direction: column;
 
   gap: 12px;
@@ -607,7 +628,7 @@ a {
 }
 
 .sip-title {
-  font-size: 58px;
+  font-size: clamp(2rem, 7vw, 58px);
   margin-bottom: 14px;
 }
 
@@ -618,6 +639,7 @@ a {
 
 .sip-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 30px;
 }
@@ -633,6 +655,9 @@ a {
 
 .sip-row {
   display: flex;
+
+  flex-wrap: wrap;
+
   justify-content: space-between;
 
   margin-top: 24px;
@@ -683,6 +708,9 @@ input[type="range"] {
   );
 
   display: flex;
+
+  flex-wrap: wrap;
+
   justify-content: space-between;
 
   gap: 40px;
@@ -718,6 +746,7 @@ input[type="range"] {
 
 .scanner-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
 }
 
@@ -769,6 +798,7 @@ input[type="range"] {
 
 .stats {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 
@@ -879,6 +909,8 @@ input[type="range"] {
 
   display: flex;
 
+  flex-wrap: wrap;
+
   align-items: center;
 
   justify-content: center;
@@ -923,6 +955,7 @@ input[type="range"] {
   color: var(--primary);
 
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
@@ -1047,6 +1080,7 @@ input[type="range"] {
 .news-scroll,
 .market-scroll {
   display: flex;
+  flex-wrap: wrap;
 
   flex-direction: column;
 
@@ -1117,6 +1151,8 @@ input[type="range"] {
 
   display: flex;
 
+  flex-wrap: wrap;
+
   justify-content: space-between;
 
   align-items: center;
@@ -1167,6 +1203,8 @@ input[type="range"] {
 .news-box-header {
   display: flex;
 
+  flex-wrap: wrap;
+
   align-items: center;
 
   justify-content: space-between;
@@ -1176,6 +1214,8 @@ input[type="range"] {
 
 .news-top-row {
   display: flex;
+
+  flex-wrap: wrap;
 
   justify-content: space-between;
 
@@ -1217,6 +1257,8 @@ input[type="range"] {
 }
 .title-live {
   display: flex;
+
+  flex-wrap: wrap;
 
   align-items: center;
 
@@ -1281,6 +1323,8 @@ input[type="range"] {
 .market-live-row {
   display: flex;
 
+  flex-wrap: wrap;
+
   align-items: center;
 
   gap: 10px;
@@ -1324,6 +1368,8 @@ input[type="range"] {
 
   display: flex;
 
+  flex-wrap: wrap;
+
   align-items: center;
 
   justify-content: center;
@@ -1350,6 +1396,8 @@ input[type="range"] {
 .auth-logo {
   display: flex;
 
+  flex-wrap: wrap;
+
   align-items: center;
 
   gap: 16px;
@@ -1369,6 +1417,8 @@ input[type="range"] {
   color: white;
 
   display: flex;
+
+  flex-wrap: wrap;
 
   align-items: center;
 
@@ -1420,6 +1470,8 @@ input[type="range"] {
 .auth-form {
   display: flex;
 
+  flex-wrap: wrap;
+
   flex-direction: column;
 
   gap: 40px;
@@ -1427,6 +1479,8 @@ input[type="range"] {
 
 .auth-input-group {
   display: flex;
+
+  flex-wrap: wrap;
 
   flex-direction: column;
 
@@ -1530,6 +1584,8 @@ input[type="range"] {
 .otp-row {
   display: flex;
 
+  flex-wrap: wrap;
+
   gap: 14px;
 
   align-items: center;
@@ -1601,7 +1657,7 @@ input[type="range"] {
 }
 
 .consultation-header h1 {
-  font-size: 110px;
+  font-size: clamp(2.5rem, 9vw, 110px);
   line-height: 0.95;
   margin-top: 20px;
   color: #111;
@@ -1624,6 +1680,7 @@ input[type="range"] {
 .consultation-contact-grid {
   margin-top: 60px;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 40px;
 }
@@ -1651,6 +1708,7 @@ input[type="range"] {
 
 .consultation-form {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap: 40px;
 }
@@ -1661,8 +1719,17 @@ input[type="range"] {
   gap: 30px;
 }
 
+@media (max-width: 768px) {
+
+  .consultation-row {
+    grid-template-columns: 1fr;
+  }
+
+}
+
 .consultation-input-group {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -1738,6 +1805,7 @@ input[type="range"] {
 
 .consultation-top-logo {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 18px;
   margin-bottom: 80px;
@@ -1750,6 +1818,7 @@ input[type="range"] {
   background: #18392b;
   color: white;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   font-size: 22px;
@@ -1983,6 +2052,7 @@ input[type="range"] {
   font-weight: 700;
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 
@@ -2468,7 +2538,7 @@ input[type="range"] {
 
   .scanner h1 {
 
-    font-size: 2.7rem;
+    font-size: clamp(2.7rem, 7vw, 76px);
   }
 
   .scanner-desc {
@@ -2493,4 +2563,14 @@ input[type="range"] {
     grid-template-columns: 1fr;
   }
 
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }

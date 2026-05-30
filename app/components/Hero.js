@@ -15,7 +15,7 @@ export default function Hero() {
 
           <h1
             style={{
-              fontSize: "5.2rem",
+              fontSize: "clamp(3rem, 8vw, 5.2rem)",
               lineHeight: "1.1",
               fontWeight: "800",
               color: "#111",
@@ -28,7 +28,7 @@ export default function Hero() {
           <p
             className="desc"
             style={{
-              fontSize: "2rem",
+              fontSize: "clamp(1.1rem, 4vw, 2rem)",
               lineHeight: "1.8",
               color: "#4a4a4a",
               maxWidth: "850px",

@@ -2171,3 +2171,140 @@ input[type="range"] {
   font-weight:700;
   cursor:pointer;
 }
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media screen and (max-width: 1024px) {
+
+  .hero-content {
+
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    gap: 50px;
+
+    padding: 0 20px;
+  }
+
+  .hero-left,
+  .hero-center,
+  .hero-right {
+
+    width: 100%;
+  }
+
+  .hero-logo {
+
+    width: 240px;
+
+    margin: auto;
+  }
+
+  .company-name {
+
+    font-size: 3rem;
+
+    letter-spacing: 3px;
+  }
+
+  .company-sub {
+
+    font-size: 1rem;
+
+    letter-spacing: 2px;
+  }
+
+  .hero-heading {
+
+    font-size: 2rem;
+
+    line-height: 1.5;
+  }
+
+  .calculator-image {
+
+    width: 280px;
+  }
+
+  .hero-bottom {
+
+    border-top-left-radius: 40px;
+
+    border-top-right-radius: 40px;
+
+    padding: 30px 20px;
+
+    gap: 25px;
+
+    justify-content: center;
+  }
+
+  .feature {
+
+    width: 100%;
+
+    justify-content: center;
+
+    font-size: 1.1rem;
+  }
+
+}
+
+/* EXTRA SMALL MOBILE */
+
+@media screen and (max-width: 600px) {
+
+  .premium-hero {
+
+    padding-top: 100px;
+  }
+
+  .hero-heading {
+
+    font-size: 1.5rem;
+
+    line-height: 1.7;
+  }
+
+  .company-name {
+
+    font-size: 2.2rem;
+  }
+
+  .company-sub {
+
+    font-size: 0.9rem;
+  }
+
+  .hero-logo {
+
+    width: 190px;
+  }
+
+  .calculator-image {
+
+    width: 220px;
+  }
+
+  .feature {
+
+    flex-direction: column;
+
+    text-align: center;
+
+    gap: 10px;
+  }
+
+  .feature span {
+
+    width: 50px;
+
+    height: 50px;
+
+    font-size: 1.2rem;
+  }
+
+}

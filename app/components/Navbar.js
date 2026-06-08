@@ -23,9 +23,12 @@ export default function Navbar() {
   setIsAdmin] =
     useState(false);
 
+  const [mobileMenuOpen, setMobileMenuOpen] =
+    useState(false);
+
   const [loading,
   setLoading] =
-    useState(false);
+    useState(true);
 
   const checkUser =
     async () => {
@@ -231,7 +234,20 @@ export default function Navbar() {
 
       {/* CENTER LINKS */}
 
-      <div className="nav-links">
+      <button
+        className="mobile-menu-btn"
+        onClick={() =>
+          setMobileMenuOpen(!mobileMenuOpen)
+        }
+      >
+        ☰
+      </button>
+
+      <div
+        className={`nav-links ${
+          mobileMenuOpen ? "active" : ""
+        }`}
+      >
 
         <a href="#home">
           Home

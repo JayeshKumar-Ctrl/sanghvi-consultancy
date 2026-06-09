@@ -88,10 +88,14 @@ export default function NewsSection() {
 
       <div className="news-header">
 
-        <h2>Industry Updates & Market Watch</h2>
+        <h2 className="news-main-title">
+          Industry Updates & Market Watch
+        </h2>
 
-        <p>
-          Latest ICAI notifications, compliance alerts, and live financial indicators.
+        <p className="news-main-desc">
+          Latest ICAI notifications,
+          compliance alerts,
+          and live financial indicators.
         </p>
 
       </div>
@@ -130,16 +134,8 @@ export default function NewsSection() {
 
                   rel="noopener noreferrer"
 
-                  className="news-item"
+                  className="news-item news-link"
 
-                  style={{
-                    textDecoration: "none",
-                    color: "white",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "12px",
-                    cursor: "pointer",
-                  }}
                 >
 
                   <span className="badge">

@@ -18,17 +18,31 @@ export default function Footer() {
           <Image
                     src="/logo.png"
                     alt="Sanghvi Consultancy"
-                    width={125}
-                    height={125}
+                    width={110}
+                    height={110}
                     className="object-contain"
+                    style={{
+                      width: "clamp(80px,12vw,125px)",
+                      height: "auto",
+                    }}
           
-                  />
-          <h3>SANGHVI CONSULTANCY SERVICES</h3>
+          />
+          
+          <h3
+            style={{
+              fontSize: "clamp(1.1rem,3vw,1.7rem)",
+              lineHeight: "1.3",
+              marginTop: "10px",
+            }}
+          >
+            SANGHVI CONSULTANCY SERVICES
+          </h3>
           <p
             style={{
               fontSize: "14px",
               fontWeight: "500",
               marginTop: "0px",
+              marginLeft: "10px",
             }}
           >
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Trusted Business and Financial Partner
@@ -61,8 +75,8 @@ export default function Footer() {
         {/* RIGHT */}
         <div>
           <p className="footer-heading">REACH US</p>
-          <p>sanghviconsultancyservices@gmail.com</p>
-          <p>+91 8247564764</p>
+          <a href="mailto:sanghviconsultancyservices@gmail.com"></a>
+          <a href="tel:+918247564764"></a>
           <p>Secunderabad, Telangana</p>
         </div>
 

@@ -50,8 +50,7 @@ export default function SIPCalculator() {
           "Please login to use SIP Calculator."
         );
 
-        window.location.href =
-          "/login";
+        router.push("/login");
 
         return;
       }
@@ -286,7 +285,11 @@ export default function SIPCalculator() {
 
           <ResponsiveContainer
             width="100%"
-            height={350}
+            height={
+              window.innerWidth < 768
+                ? 250
+                : 350
+            }
           >
 
             <AreaChart data={data}>

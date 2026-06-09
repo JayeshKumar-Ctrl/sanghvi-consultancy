@@ -294,7 +294,7 @@ export default function Dashboard() {
               display: "grid",
 
               gridTemplateColumns:
-                "repeat(auto-fit, minmax(320px, 1fr))",
+                "repeat(auto-fit, minmax(280px, 1fr))",
 
               gap: "30px",
 
@@ -581,7 +581,7 @@ export default function Dashboard() {
                             ? "#1f7a1f"
                             : item.status === "Rejected"
                             ? "#d62828"
-                            : "#d62828",
+                            : "#f59e0b",
 
                         color: "white",
                       }}
@@ -653,6 +653,8 @@ export default function Dashboard() {
             >
 
               <div
+
+                className="dashboard-modal"
 
                 onClick={(e) => {
 
@@ -746,7 +748,7 @@ export default function Dashboard() {
                   style={{
 
                     fontSize:
-                      "42px",
+                      "clamp(28px,6vw,42px)",
 
                     marginBottom:
                       "20px",
@@ -764,11 +766,12 @@ export default function Dashboard() {
                 {/* BUTTONS */}
 
                 <div
-                  style={{
-                    display: "flex",
-                    gap: "14px",
-                    marginBottom: "25px",
-                  }}
+                style={{
+                display:"flex",
+                gap:"14px",
+                flexWrap:"wrap",
+                marginBottom:"25px",
+                }}
                 >
 
                   <button
@@ -1134,33 +1137,53 @@ export default function Dashboard() {
                       Phone Number:
                     </strong>
 
-                    <p
-                      style={{
+                    {
+                      editMode ? (
 
-                        marginTop:
-                          "10px",
+                        <input
 
-                        padding:
-                          "12px",
+                          value={editedUser.phone}
 
-                        background:
-                          "#f3f3f3",
+                          onChange={(e)=>{
 
-                        borderRadius:
-                          "10px",
+                            setEditedUser({
 
-                        color:
-                          "#666",
+                              ...editedUser,
 
-                      }}
-                    >
+                              phone:e.target.value,
 
-                      {
-                        userData.phone ||
-                        "Not Added"
-                      }
+                            });
 
-                    </p>
+                          }}
+
+                          style={{
+
+                            width:"100%",
+
+                            padding:"12px",
+
+                            marginTop:"10px",
+
+                            borderRadius:"10px",
+
+                            border:"1px solid #ccc",
+
+                            fontSize:"16px",
+
+                          }}
+
+                        />
+
+                      ) : (
+
+                        <p>
+
+                          {userData.phone || "Not Added"}
+
+                        </p>
+
+                      )
+                    }
 
                   </div>
 
@@ -1217,6 +1240,8 @@ export default function Dashboard() {
             >
 
               <div
+
+                className="dashboard-modal"
 
                 onClick={(e) => {
 
@@ -1296,7 +1321,7 @@ export default function Dashboard() {
                   style={{
 
                     fontSize:
-                      "40px",
+                      "clamp(28px,6vw,40px)",
 
                     marginBottom:
                       "30px",
@@ -1586,6 +1611,8 @@ export default function Dashboard() {
 
               <div
 
+                className="dashboard-modal"
+
                 onClick={(e) => {
 
                   e.stopPropagation();
@@ -1664,7 +1691,7 @@ export default function Dashboard() {
                   style={{
 
                     fontSize:
-                      "34px",
+                      "clamp(26px,6vw,34px)",
 
                     marginBottom:
                       "25px",
@@ -1929,6 +1956,8 @@ export default function Dashboard() {
 
               <div
 
+                className="dashboard-modal"
+
                 onClick={(e) => {
 
                   e.stopPropagation();
@@ -2010,7 +2039,7 @@ export default function Dashboard() {
                   style={{
 
                     fontSize:
-                      "36px",
+                      "clamp(26px,6vw,36px)",
 
                     marginBottom:
                       "20px",

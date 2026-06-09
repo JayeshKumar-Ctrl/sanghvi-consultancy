@@ -13,28 +13,11 @@ export default function Hero() {
         {/* LEFT TEXT */}
         <div className="hero-text">
 
-          <h1
-            style={{
-              fontSize: "clamp(3rem, 8vw, 5.2rem)",
-              lineHeight: "1.1",
-              fontWeight: "800",
-              color: "#111",
-              marginBottom: "30px",
-            }}
-          >
+          <h1 className="hero-title">
             Commitment
           </h1>
 
-          <p
-            className="desc"
-            style={{
-              fontSize: "clamp(1.1rem, 4vw, 2rem)",
-              lineHeight: "1.8",
-              color: "#4a4a4a",
-              maxWidth: "850px",
-              fontWeight: "500",
-            }}
-          >
+          <p className="hero-desc">
             We combine technical expertise with clear communication,
             empowering clients to make informed decisions with confidence.
             We uphold the highest level of professionalism and reliability
@@ -50,6 +33,7 @@ export default function Hero() {
             src="/finance-dashboard.png"
             alt="Finance Premium"
             className="hero-small-image"
+            loading="lazy"
           />
 
         </div>
@@ -68,8 +52,8 @@ export default function Hero() {
           className="hero-big-image"
         />
         <div className="floating-card">
-          <h2>98%</h2>
-          <p>Client retention rate</p>
+          <h2>16+</h2>
+          <p>Years of Experience</p>
         </div>
 
       </div>

@@ -293,7 +293,7 @@ a {
 .hero-big-image {
   width: 100%;
 
-  height: 720px;
+  height: clamp(300px, 60vw, 720px);
 
   object-fit: cover;
 
@@ -489,7 +489,7 @@ a {
 .service-grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 
   gap: 28px;
 
@@ -519,7 +519,9 @@ a {
 
   padding: 32px;
 
-  min-height: 370px;
+  min-height: 400px;
+
+  height: auto;
 
   transition: 0.35s ease;
 
@@ -575,6 +577,8 @@ a {
   margin-bottom: 24px;
   line-height: 1.4;
   word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .service-list {
@@ -645,11 +649,18 @@ a {
 
 .sip-card,
 .chart {
-  background: rgba(245, 243, 239, 0.92);
 
-  border-radius: 24px;
+  background:
+  rgba(245,243,239,0.92);
 
-  padding: 30px;
+  border-radius:24px;
+
+  padding:clamp(16px,3vw,30px);
+
+  width:100%;
+
+  overflow:hidden;
+
 }
 
 .sip-row {
@@ -679,14 +690,20 @@ input[type="range"] {
   accent-color: var(--primary);
 }
 
-.tooltip {
-  background: var(--primary);
+.tooltip{
 
-  color: white;
+  background:var(--primary);
 
-  padding: 12px 16px;
+  color:white;
 
-  border-radius: 12px;
+  padding:10px 14px;
+
+  border-radius:12px;
+
+  max-width:220px;
+
+  font-size:14px;
+
 }
 
 /* =========================
@@ -722,7 +739,8 @@ input[type="range"] {
 }
 
 .scanner h1 {
-  font-size: 76px;
+
+  font-size: clamp(2.2rem,7vw,76px);
 
   line-height: 1.1;
 
@@ -796,14 +814,21 @@ input[type="range"] {
 ========================= */
 
 .stats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
 
-  padding: 0 60px;
+  display:flex;
 
-  margin-top: 60px;
+  flex-wrap:wrap;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:50px;
+
+  padding:0 60px;
+
+  margin-top:60px;
+
 }
 
 .stat h2 {
@@ -817,10 +842,15 @@ input[type="range"] {
 }
 
 .divider {
-  width: 2px;
-  height: 50px;
 
-  background: var(--accent);
+  width:2px;
+
+  height:50px;
+
+  background:var(--accent);
+
+  flex-shrink:0;
+
 }
 
 /* =========================
@@ -1159,7 +1189,21 @@ input[type="range"] {
   color: white;
 
   transition: 0.3s ease;
+
+  gap: 10px;
+
+  
+
 }
+
+@media (max-width: 480px) {
+
+    .market-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+  }
 
 .market-item:hover {
   transform: translateY(-3px);
@@ -2414,7 +2458,9 @@ input[type="range"] {
 
   .hero-big-image {
 
-    height: auto;
+    width: 100%;
+
+    height: clamp(300px, 60vw, 720px);
 
     min-height: 300px;
 
@@ -2667,4 +2713,449 @@ body {
     font-size: 13px;
     padding: 10px 14px;
   }
+}
+
+@media (max-width: 768px){
+
+  .about-container{
+    width:95% !important;
+  }
+
+  .about-text{
+    text-align:left;
+  }
+
+  .about-image img{
+    height:auto !important;
+    max-height:450px;
+  }
+
+}
+
+/* FOOTER MOBILE FIX */
+
+@media screen and (max-width: 768px) {
+
+  .footer {
+    padding: 40px 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 35px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-cta {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    padding: 16px 20px;
+  }
+
+  .footer-desc {
+    font-size: 15px;
+  }
+
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 5.2rem);
+  line-height: 1.1;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 30px;
+}
+
+.hero-desc {
+  font-size: clamp(1rem, 3vw, 2rem);
+  line-height: 1.8;
+  color: #4a4a4a;
+  max-width: 850px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+
+  .floating-card {
+    right: 10px;
+    bottom: 10px;
+    padding: 12px 16px;
+  }
+
+  .floating-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .floating-card p {
+    font-size: 0.8rem;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .hero-wrapper {
+    padding: 40px 20px;
+  }
+
+  .hero-top {
+    gap: 25px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+}
+
+/* =========================
+   NEWS MOBILE FIX
+========================= */
+
+.news-main-title {
+  font-size: clamp(2rem, 6vw, 58px);
+  line-height: 1.2;
+}
+
+.news-main-desc {
+  font-size: clamp(1rem, 3vw, 22px);
+  line-height: 1.7;
+}
+
+.news-link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  .news-section {
+    padding: 40px 16px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .news-box {
+    height: auto;
+    min-height: 350px;
+    padding: 20px;
+  }
+
+  .news-box-title {
+    font-size: 22px;
+  }
+
+  .news-scroll,
+  .market-scroll {
+    height: auto;
+    max-height: 350px;
+  }
+
+  .market-item {
+    padding: 14px;
+  }
+
+  .market-item strong {
+    font-size: 16px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+}
+
+.current-plan{
+  margin-bottom:20px;
+  color:#18392b;
+  font-weight:600;
+}
+
+@media (max-width:768px){
+
+  .scanner-preview{
+    width:100%;
+    max-width:100%;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .scanner-buttons{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .scanner-buttons button{
+    width:100%;
+  }
+
+}
+
+/* SERVICES MOBILE FIX */
+
+@media (max-width:768px){
+
+  .services{
+    padding:40px 16px;
+  }
+
+  .service-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .service-card{
+    min-height:auto;
+    height:auto;
+    padding:24px;
+  }
+
+  .service-card h3{
+    font-size:20px;
+    margin-bottom:18px;
+  }
+
+  .service-list li{
+    font-size:14px;
+  }
+
+}
+
+/* =========================
+   SIP MOBILE FIX
+========================= */
+
+@media (max-width:768px){
+
+  .sip{
+    padding:40px 16px;
+  }
+
+  .sip-title{
+    font-size:2.2rem;
+    text-align:center;
+  }
+
+  .sip-desc{
+    text-align:center;
+    font-size:1rem;
+  }
+
+  .sip-top-card{
+    padding:20px;
+  }
+
+  .sip-top-card h2{
+    font-size:2rem;
+  }
+
+  .sip-container{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .sip-card,
+  .sip-chart{
+    width:100%;
+    padding:20px;
+  }
+
+  .sip-row{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+  .value{
+    font-size:18px;
+  }
+
+}
+
+.sip-chart{
+  background: rgba(245,243,239,0.92);
+  border-radius:24px;
+  padding:20px;
+  width:100%;
+  overflow:hidden;
+}
+
+/* =========================
+   STATS MOBILE FIX
+========================= */
+
+@media (max-width:768px){
+
+  .stats{
+
+    flex-direction:column;
+
+    gap:25px;
+
+    padding:40px 20px;
+
+    text-align:center;
+
+  }
+
+  .divider{
+
+    width:70px;
+
+    height:2px;
+
+  }
+
+  .stat h2{
+
+    font-size:2.5rem;
+
+  }
+
+  .stat p{
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+  }
+
+}
+
+/* =========================
+   CONSULTATION MOBILE FIX
+========================= */
+
+@media (max-width:768px){
+
+  .consultation-page{
+    padding:40px 15px 0;
+  }
+
+  .consultation-top-logo{
+    justify-content:center;
+    text-align:center;
+    margin-bottom:40px;
+  }
+
+  .consultation-logo-text h3{
+    font-size:18px;
+  }
+
+  .consultation-header{
+    text-align:center;
+  }
+
+  .consultation-header h1{
+    font-size:3rem;
+    line-height:1.1;
+  }
+
+  .consultation-header p{
+    font-size:1rem;
+    margin-top:20px;
+  }
+
+  .consultation-card{
+    padding:24px;
+    border-radius:24px;
+  }
+
+  .consultation-input-group input,
+  .consultation-input-group textarea,
+  .consultation-input-group select{
+
+    background:transparent;
+
+    border:none;
+
+    border-bottom:
+    1px solid rgba(0,0,0,0.12);
+
+    padding:18px 0;
+
+    font-size:18px;
+
+    outline:none;
+
+  }
+
+  .consultation-btn{
+
+    width:100%;
+
+    padding:16px;
+
+    font-size:18px;
+  }
+
+}
+
+/* DASHBOARD MODAL MOBILE FIX */
+
+@media (max-width:768px){
+
+  .dashboard-modal{
+
+    width:95% !important;
+
+    padding:20px !important;
+
+    border-radius:20px !important;
+
+    max-height:85vh !important;
+  }
+
+}
+
+/* DASHBOARD MOBILE FIX */
+
+@media (max-width:768px){
+
+  .dashboard-card{
+    padding:22px;
+  }
+
+  .dashboard-card h2{
+    font-size:22px;
+  }
+
+  .dashboard-card p{
+    font-size:15px;
+  }
+
+}
+
+/* ANALYTICS MOBILE FIX */
+
+@media (max-width:768px){
+
+  .analytics-back-btn{
+
+    width:100%;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+  }
+
 }

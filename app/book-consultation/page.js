@@ -126,9 +126,15 @@ BookConsultationPage() {
 
             <div className="consultation-top-logo">
 
-              <div className="consultation-logo-circle">
-                SCS
-              </div>
+              <img
+                src="/logo.png"
+                alt="Sanghvi Consultancy"
+                style={{
+                  width:"90px",
+                  height:"90px",
+                  objectFit:"contain"
+                }}
+              />
 
               <div className="consultation-logo-text">
                 <h3>SANGHVI</h3>
@@ -151,9 +157,9 @@ BookConsultationPage() {
               </h1>
 
               <p>
-                Schedule a confidential
-                consultation with our
-                experts.
+                Schedule a confidential consultation
+                with our Chartered Accountancy and
+                Financial Advisory team.
               </p>
 
             </div>
@@ -218,15 +224,20 @@ BookConsultationPage() {
                     </label>
 
                     <input
-                      type="text"
+                      type="tel"
+
                       name="phone"
-                      value={
-                        formData.phone
-                      }
-                      onChange={
-                        handleChange
-                      }
+
+                      inputMode="numeric"
+
+                      maxLength={10}
+
+                      value={formData.phone}
+
+                      onChange={handleChange}
+
                       required
+
                     />
 
                   </div>
@@ -237,18 +248,49 @@ BookConsultationPage() {
                       Service Required
                     </label>
 
-                    <input
-                      type="text"
+                    <select
                       name="service"
-                      placeholder="GST Filing / Investment / Loan etc."
-                      value={
-                        formData.service
-                      }
-                      onChange={
-                        handleChange
-                      }
+                      value={formData.service}
+                      onChange={handleChange}
                       required
-                    />
+                    >
+                      <option value="">
+                        Select Service
+                      </option>
+
+                      <option>
+                        GST Filing
+                      </option>
+
+                      <option>
+                        Income Tax
+                      </option>
+
+                      <option>
+                        Accounting
+                      </option>
+
+                      <option>
+                        Audit
+                      </option>
+
+                      <option>
+                        Investment Advisory
+                      </option>
+
+                      <option>
+                        Loan Assistance
+                      </option>
+
+                      <option>
+                        Startup Advisory
+                      </option>
+
+                      <option>
+                        AI Accounting
+                      </option>
+
+                    </select>
 
                   </div>
 
@@ -277,6 +319,7 @@ BookConsultationPage() {
                 <button
                   className="consultation-btn"
                   type="submit"
+                  disabled={loading}
                 >
 
                   {

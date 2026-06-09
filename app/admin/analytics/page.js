@@ -292,13 +292,14 @@ export default function AnalyticsPage() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
 
       <button
-
+      
+        className="analytics-back-btn"
         onClick={() => {
 
           router.push(
@@ -341,7 +342,7 @@ export default function AnalyticsPage() {
         style={{
 
           fontSize:
-            "64px",
+            "clamp(36px,8vw,64px)",
 
           marginBottom:
             "50px",
@@ -383,7 +384,7 @@ export default function AnalyticsPage() {
                     "white",
 
                   padding:
-                    "40px",
+                    "clamp(20px,4vw,40px)",
 
                   borderRadius:
                     "28px",
@@ -416,7 +417,7 @@ export default function AnalyticsPage() {
                   style={{
 
                     fontSize:
-                      "54px",
+                      "clamp(32px,7vw,54px)",
 
                   }}
                 >

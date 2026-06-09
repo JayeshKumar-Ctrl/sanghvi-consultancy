@@ -140,13 +140,7 @@ export default function Scanner() {
           {
             user && (
 
-              <p
-                style={{
-                  marginBottom: "20px",
-                  color: "#18392b",
-                  fontWeight: "600",
-                }}
-              >
+              <p className="current-plan">
 
                 Current Plan:
                 {" "}
@@ -272,11 +266,13 @@ export default function Scanner() {
             <div
               style={{
                 background: "white",
-                width: "520px",
+                width: "90%",
                 borderRadius: "28px",
-                padding: "50px",
+                padding: "clamp(20px,5vw,50px)",
                 textAlign: "center",
                 position: "relative",
+                maxWidth: "520px",
+
               }}
             >
 
@@ -294,8 +290,8 @@ export default function Scanner() {
                   right: "18px",
                   border: "none",
                   background: "#eee",
-                  width: "40px",
-                  height: "40px",
+                  width: "clamp(32px,8vw,40px)",
+                  height: "clamp(32px,8vw,40px)",
                   borderRadius: "50%",
                   fontSize: "22px",
                   cursor: "pointer",
@@ -309,7 +305,7 @@ export default function Scanner() {
               <h1
                 style={{
                   color: "#123524",
-                  fontSize: "52px",
+                  fontSize: "clamp(2rem, 6vw, 52px)",
                   fontWeight: "700",
                 }}
               >
@@ -321,7 +317,7 @@ export default function Scanner() {
               <p
                 style={{
                   marginTop: "24px",
-                  fontSize: "30px",
+                  fontSize: "clamp(1rem, 4vw, 30px)",
                   color: "#444",
                   lineHeight: "1.6",
                 }}
@@ -349,7 +345,7 @@ export default function Scanner() {
                   padding:
                     "18px 40px",
                   borderRadius: "18px",
-                  fontSize: "24px",
+                  fontSize: "clamp(1rem, 3vw, 24px)",
                   cursor: "pointer",
                   fontWeight: "600",
                 }}

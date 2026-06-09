@@ -17,7 +17,7 @@ export default function Stats() {
       <div className="divider"></div>
 
       <div className="stat">
-        <h2>₹3,400 Cr</h2>
+        <h2>₹3,400Cr+</h2>
         <p>AUDITS CLOSED</p>
       </div>
 

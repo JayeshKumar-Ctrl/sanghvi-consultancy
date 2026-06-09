@@ -6,7 +6,7 @@ export default function About() {
       id="about"
       className="about"
       style={{
-        padding: "100px 0",
+        padding: "clamp(50px,8vw,100px) 0",
         background: "#d8cfbd",
       }}
     >
@@ -19,8 +19,8 @@ export default function About() {
           margin: "auto",
           display: "grid",
           gridTemplateColumns:
-            "1.1fr 1fr",
-          gap: "70px",
+            "repeat(auto-fit,minmax(320px,1fr))",
+          gap: "clamp(25px,4vw,70px)",
           alignItems: "start",
         }}
       >
@@ -31,7 +31,7 @@ export default function About() {
 
           <p
             style={{
-              fontSize: "24px",
+              fontSize: "clamp(1rem,2vw,24px)",
               lineHeight: "1.8",
               color: "#404040",
               marginBottom: "35px",
@@ -60,7 +60,7 @@ export default function About() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(2,minmax(220px,1fr))",
+                "repeat(auto-fit,minmax(180px,1fr))",
               gap: "18px",
               marginBottom: "40px",
             }}
@@ -87,7 +87,7 @@ export default function About() {
 
                   borderRadius: "18px",
 
-                  fontSize: "18px",
+                  fontSize: "clamp(0.95rem,2vw,18px)",
 
                   fontWeight: "600",
 
@@ -113,7 +113,8 @@ export default function About() {
             alt="office"
             style={{
               width: "100%",
-              height:"72vh",
+              height:"auto",
+              maxHeight:"700px",
               borderRadius: "35px",
               objectFit: "cover",
               boxShadow:

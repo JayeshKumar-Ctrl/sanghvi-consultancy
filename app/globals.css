@@ -648,10 +648,9 @@ a {
 }
 
 .sip-card,
-.chart {
+.sip-chart {
 
-  background:
-  rgba(245,243,239,0.92);
+  background: rgba(245,243,239,0.92);
 
   border-radius:24px;
 

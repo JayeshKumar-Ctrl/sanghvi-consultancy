@@ -3009,6 +3009,7 @@ body {
   padding:20px;
   width:100%;
   overflow:hidden;
+  min-height:320px;
 }
 
 /* =========================

@@ -45,10 +45,10 @@ export default function Footer() {
               marginLeft: "10px",
             }}
           >
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Trusted Business and Financial Partner
+            &nbsp;&nbsp;&nbsp;&nbsp;Your Trusted Business and Financial Partner
           </p>
           <p className="footer-desc">
-            Modern Chartered Accountancy for businesses that move fast.
+            Modern professionals for businesses that move fast.
             Audit, tax, advisory, and AI-assisted bookkeeping — all under one trusted roof.
           </p>
         </div>
@@ -75,9 +75,14 @@ export default function Footer() {
         {/* RIGHT */}
         <div>
           <p className="footer-heading">REACH US</p>
-          <a href="mailto:sanghviconsultancyservices@gmail.com"></a>
-          <a href="tel:+918247564764"></a>
           <p>Secunderabad, Telangana</p>
+          <a href="mailto:sanghviconsultancyservices@gmail.com">
+            sanghviconsultancyservices@gmail.com
+          </a>
+          <br />
+          <a href="tel:+918247564764">
+            +91 82475 64764
+          </a>
         </div>
 
       </div>

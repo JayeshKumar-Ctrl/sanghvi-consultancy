@@ -321,7 +321,7 @@ export default function SIPCalculator() {
 
           <ResponsiveContainer
             width="100%"
-            height={chartHeight}
+            height={300}
           >
 
             <AreaChart data={data}>

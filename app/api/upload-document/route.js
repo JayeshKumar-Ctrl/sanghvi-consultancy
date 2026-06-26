@@ -31,6 +31,26 @@ export async function POST(req) {
     const token =
       formData.get("token");
 
+    const decoded =
+      jwt.verify(
+        token,
+        process.env.JWT_SECRET
+      );
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Unauthorized.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
+
     if (!file) {
 
       return Response.json(
@@ -46,19 +66,40 @@ export async function POST(req) {
 
     }
 
-    // VERIFY TOKEN
+    const allowedTypes = [
 
-    const decoded =
-      jwt.verify(
-        token,
-        process.env.JWT_SECRET
+      "application/pdf",
+
+      "image/jpeg",
+
+      "image/png",
+
+      "image/jpg",
+
+    ];
+
+    if (
+      !allowedTypes.includes(file.type)
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Only PDF, JPG, JPEG and PNG files are allowed.",
+        },
+        {
+          status: 400,
+        }
       );
+
+    }
 
     // IMPORTANT FIX
 
     const user =
       await User.findById(
-        decoded.id || decoded.userId
+        decoded.id
       );
 
     if (!user) {
@@ -148,13 +189,21 @@ export async function POST(req) {
 
       });
 
-    return Response.json({
+    return Response.json(
+      {
 
-      success: true,
+        success: true,
 
-      document,
+        message:
+          "Document uploaded successfully.",
 
-    });
+        document,
+      },
+      {
+        status: 201,
+      }
+      
+    );
 
   } catch (error) {
 

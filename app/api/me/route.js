@@ -15,7 +15,9 @@ export async function GET(req) {
 
       return Response.json(
         {
-          message: "No token",
+          success: false,
+          message: "Authorization token is required.",
+
         },
         {
           status: 401,
@@ -25,7 +27,23 @@ export async function GET(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid authorization header.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     const decoded = jwt.verify(
       token,
@@ -34,7 +52,21 @@ export async function GET(req) {
 
     const user =
       await User.findById(decoded.id)
-      .select("-password");
+      .select( "fullName email company phone planType isPremium isPaid");
+
+    if (!user) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
 
     return Response.json(
       {
@@ -49,7 +81,8 @@ export async function GET(req) {
 
     return Response.json(
       {
-        message: "Invalid token",
+        success: false,
+        message: "Invalid or expired token.",
       },
       {
         status: 401,

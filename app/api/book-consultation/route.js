@@ -14,13 +14,74 @@ export async function POST(req) {
     const body =
       await req.json();
 
-    const {
-      fullName,
-      email,
-      phone,
-      service,
-      message,
-    } = body;
+    const fullName =
+      body.fullName?.trim();
+
+    const email =
+      body.email?.trim().toLowerCase();
+
+    const phone =
+      body.phone?.trim();
+
+    const service =
+      body.service?.trim();
+
+    const message =
+      body.message?.trim();
+
+    if (
+      !fullName ||
+      !email ||
+      !phone ||
+      !service ||
+      !message
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Please fill all required fields.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Invalid email address.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Enter a valid 10-digit phone number.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     // GET TOKEN
 
@@ -33,6 +94,7 @@ export async function POST(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "Unauthorized",
         },
@@ -73,9 +135,24 @@ export async function POST(req) {
         success: true,
 
         message:
-          "Consultation booked successfully",
+          "Consultation booked successfully.",
 
-        consultation,
+        consultation: {
+
+          _id:
+            consultation._id,
+
+          fullName:
+            consultation.fullName,
+
+          service:
+            consultation.service,
+
+          status:
+            consultation.status,
+
+        },
+
       },
       {
         status: 201,
@@ -88,6 +165,7 @@ export async function POST(req) {
 
     return Response.json(
       {
+        success: false,
         message:
           "Something went wrong",
       },

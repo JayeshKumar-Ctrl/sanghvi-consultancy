@@ -1418,12 +1418,15 @@ input[type="range"] {
   justify-content: center;
 
   padding: 40px 20px;
+
+  min-height:calc(100vh - 120px);
+
 }
 
 .auth-card {
   width: 100%;
 
-  max-width: 560px;
+  max-width: 500px;
 
   background: #f8f6f1;
 
@@ -1431,7 +1434,7 @@ input[type="range"] {
 
   border-radius: 40px;
 
-  padding: 60px;
+  padding: clamp(28px,5vw,60px);
 
   box-shadow: 0 10px 40px rgba(0,0,0,0.04);
 }
@@ -1443,9 +1446,14 @@ input[type="range"] {
 
   align-items: center;
 
-  gap: 16px;
+  justify-content:center;
+
+  gap: 18px;
 
   margin-bottom: 50px;
+
+  text-align:center;
+
 }
 
 .auth-logo-circle {
@@ -1507,7 +1515,7 @@ input[type="range"] {
 
   margin-bottom: 50px;
 
-  font-size: 18px;
+  font-size: clamp(15px,3vw,18px);
 }
 
 .auth-form {
@@ -2058,6 +2066,8 @@ input[type="range"] {
   box-shadow:
     0 0 25px rgba(29,92,67,0.25);
 
+  transform:scale(1.01);
+
 }
 .premium-button {
 
@@ -2087,11 +2097,12 @@ input[type="range"] {
   background: white;
   color: #062b1f;
 
-  padding: 26px 32px;
+  padding: clamp(18px, 3vw, 26px)
+           clamp(20px, 4vw, 32px);
 
   border-radius: 24px;
 
-  font-size: 24px;
+  font-size: clamp(1rem, 3vw, 24px);
   font-weight: 700;
 
   display: flex;
@@ -2107,6 +2118,9 @@ input[type="range"] {
     0 10px 25px rgba(0,0,0,0.12);
 
   cursor: pointer;
+
+  gap:12px;
+
 }
 
 .premium-service-box:hover{
@@ -2141,18 +2155,18 @@ input[type="range"] {
 .premium-green-card{
   background:linear-gradient(135deg,#062b1f,#00150f);
   color:white;
-  padding:28px;
+  padding:clamp(18px,4vw,28px);
   border-radius:22px;
-  font-size:24px;
+  font-size:clamp(1rem,3vw,24px);
   font-weight:600;
 }
 
 .premium-risk-card{
   background:#fff4f0;
   color:#7a2c18;
-  padding:28px;
+  padding:clamp(18px,4vw,28px);
   border-radius:22px;
-  font-size:24px;
+  font-size:clamp(1rem,3vw,24px);
   font-weight:600;
 }
 
@@ -3155,6 +3169,307 @@ body {
     text-align:center;
 
     margin-bottom:20px;
+
+  }
+
+}
+
+/* ADMIN CONSULTATIONS MOBILE FIX */
+
+@media (max-width:768px){
+
+  .consultation-action-btn{
+
+    width:100%;
+
+  }
+
+}
+
+/* ADMIN BACK BUTTON */
+
+@media (max-width:768px){
+
+  .admin-back-btn{
+
+    width:100%;
+
+    text-align:center;
+
+  }
+
+}
+
+/* =====================================
+   GLOBAL LOADER
+===================================== */
+
+.loader {
+
+  width: 50px;
+
+  height: 50px;
+
+  border: 4px solid #ddd;
+
+  border-top: 4px solid #18392b;
+
+  border-radius: 50%;
+
+  animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+
+  from {
+
+    transform: rotate(0deg);
+
+  }
+
+  to {
+
+    transform: rotate(360deg);
+
+  }
+
+}
+
+/* ADMIN NOTIFICATIONS MOBILE FIX */
+
+@media (max-width:768px){
+
+  .notification-card{
+
+    border-radius:18px !important;
+
+  }
+
+}
+
+/* ADMIN PAYMENTS MOBILE FIX */
+
+@media (max-width:768px){
+
+  .payment-card{
+
+    border-radius:20px !important;
+
+  }
+
+}
+
+/* ===========================
+   ADMIN USERS MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .user-card{
+
+    border-radius:20px !important;
+
+  }
+
+  .user-plan-btn{
+
+    width:100%;
+
+  }
+
+}
+
+/* ===========================
+   ADMIN DASHBOARD MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .admin-dashboard-card{
+
+    border-radius:20px !important;
+
+  }
+
+}
+
+/* ===========================
+   ADMIN UPLOADS MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .upload-user-card{
+
+    border-radius:20px !important;
+
+  }
+
+}
+
+/* ===========================
+   USER UPLOADS MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .user-upload-card{
+
+    border-radius:20px !important;
+
+  }
+
+  .view-file-btn{
+
+    width:100%;
+
+  }
+
+}
+
+/* ===========================
+   CONVERTED FILES MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .converted-file-card{
+
+    border-radius:20px !important;
+
+  }
+
+  .download-excel-btn{
+
+    width:100%;
+
+  }
+
+}
+
+/* ===========================
+   MY DOCUMENTS MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .document-card{
+
+    border-radius:20px !important;
+
+  }
+
+  .open-document-btn{
+
+    width:100%;
+
+  }
+
+}
+
+/* ===========================
+   SCANNER MOBILE FIX
+=========================== */
+
+@media (max-width:768px){
+
+  .dashboard-card{
+
+    padding:22px !important;
+
+    border-radius:20px !important;
+
+  }
+
+  .dashboard-card h2{
+
+    font-size:24px !important;
+
+    flex-wrap:wrap;
+
+  }
+
+  .premium-button{
+
+    width:100%;
+
+    text-align:center;
+
+  }
+
+  .upload-zone{
+
+    padding:20px !important;
+
+  }
+
+}
+
+.auth-logo-image{
+
+  width:110px;
+
+  height:auto;
+
+}
+
+@media (max-width:768px){
+
+  .auth-logo-image{
+
+    width:80px;
+
+  }
+
+}
+
+@media(max-width:768px){
+
+  .auth-button{
+
+    width:100%;
+
+  }
+
+}
+
+.auth-button:disabled{
+
+  opacity:.6;
+
+  cursor:not-allowed;
+
+}
+
+.auth-logo-image{
+  width:110px;
+  height:auto;
+}
+
+@media (max-width:768px){
+
+  .auth-logo-image{
+
+    width:80px;
+
+  }
+
+}
+
+.auth-subtext{
+
+  font-size:clamp(15px,3vw,18px);
+
+}
+
+@media (max-width:768px){
+
+  .premium-service-box{
+
+    flex-direction:column;
+
+    align-items:flex-start;
 
   }
 

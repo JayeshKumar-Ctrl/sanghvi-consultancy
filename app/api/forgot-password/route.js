@@ -9,11 +9,30 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const { email } = body;
+    const email =
+      body.email?.trim().toLowerCase();
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid email address.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     if (!email) {
       return Response.json(
         {
+          success: false,
           message: "Email required",
         },
         {
@@ -29,6 +48,7 @@ export async function POST(req) {
     if (!user) {
       return Response.json(
         {
+          success: false,
           message: "User not found",
         },
         {
@@ -70,6 +90,9 @@ export async function POST(req) {
 
       html: `
         <div style="font-family:sans-serif;padding:20px">
+        
+          <h2>Sanghvi Consultancy Services</h2>
+
           <h2>Password Reset</h2>
 
           <p>Your OTP is:</p>
@@ -95,6 +118,7 @@ export async function POST(req) {
 
     return Response.json(
       {
+        success: false,
         message:
           "Something went wrong",
       },

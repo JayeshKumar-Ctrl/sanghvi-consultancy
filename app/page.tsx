@@ -19,13 +19,13 @@ export default function Home() {
         style={{
           width: "90%",
           maxWidth: "1400px",
-          margin: "-10px auto -30px auto",
+          margin: "0 auto 30px auto",
         }}
       >
 
         <h1
           style={{
-            fontSize: "72px",
+            fontSize: "clamp(36px, 8vw, 72px)",
             fontWeight: "800",
             color: "#062b1f",
             marginBottom: "20px",
@@ -37,7 +37,7 @@ export default function Home() {
 
         <p
           style={{
-            fontSize: "28px",
+            fontSize: "clamp(16px, 3vw, 28px)",
             color: "#4a4a4a",
             lineHeight: "1.8",
             maxWidth: "900px",

@@ -109,32 +109,27 @@ export default function AdminPage() {
 
       <div
         style={{
-
-          minHeight:
-            "100vh",
-
-          display:
-            "flex",
-
-          alignItems:
-            "center",
-
-          justifyContent:
-            "center",
-
-          fontSize:
-            "42px",
-
-          fontWeight:
-            "700",
-
-          background:
-            "#d9cfbd",
-
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "20px",
+          background: "#d9cfbd",
         }}
       >
 
-        Loading Admin Panel...
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading Admin Panel...
+        </p>
 
       </div>
 
@@ -206,7 +201,7 @@ export default function AdminPage() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
@@ -215,7 +210,7 @@ export default function AdminPage() {
         style={{
 
           fontSize:
-            "72px",
+            "clamp(36px,8vw,72px)",
 
           marginBottom:
             "10px",
@@ -231,7 +226,7 @@ export default function AdminPage() {
         style={{
 
           fontSize:
-            "24px",
+            "clamp(18px,4vw,24px)",
 
           marginBottom:
             "50px",
@@ -252,7 +247,7 @@ export default function AdminPage() {
             "grid",
 
           gridTemplateColumns:
-            "repeat(auto-fit,minmax(320px,1fr))",
+            "repeat(auto-fit,minmax(280px,1fr))",
 
           gap:
             "30px",
@@ -266,6 +261,8 @@ export default function AdminPage() {
             (card, index) => (
 
               <div
+
+                className="admin-dashboard-card"
 
                 key={index}
 
@@ -283,7 +280,7 @@ export default function AdminPage() {
                     "white",
 
                   padding:
-                    "50px",
+                    "clamp(24px,5vw,50px)",
 
                   borderRadius:
                     "30px",
@@ -292,7 +289,7 @@ export default function AdminPage() {
                     "pointer",
 
                   transition:
-                    "0.3s ease",
+                    "transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease",
 
                   border:
                     "2px solid #18392b",

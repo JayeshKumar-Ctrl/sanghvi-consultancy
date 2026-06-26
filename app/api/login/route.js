@@ -12,7 +12,42 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const { email, password } = body;
+    const email =
+      body.email?.trim().toLowerCase();
+
+    const password =
+      body.password;
+
+    if (!email || !password) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Email and password are required.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid email address.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     // CHECK USER
     const user = await User.findOne({ email });
@@ -65,25 +100,49 @@ export async function POST(req) {
     );
 
     return Response.json(
+
       {
         success: true,
+
         message: "Login successful",
+
         token,
-        user,
+
+        user: {
+
+          _id: user._id,
+
+          fullName: user.fullName,
+
+          email: user.email,
+
+          company: user.company,
+
+          phone: user.phone,
+
+          planType: user.planType,
+
+          isPremium: user.isPremium,
+
+        },
+
       },
       {
         status: 200,
       }
+
     );
+
 
   } catch (error) {
 
     console.log(error);
 
     return Response.json(
+
       {
         success: false,
-        message: "Something went wrong",
+        message: "Internal server error.",
       },
       {
         status: 500,

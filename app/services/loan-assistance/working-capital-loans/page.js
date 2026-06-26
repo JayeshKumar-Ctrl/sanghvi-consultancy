@@ -8,7 +8,7 @@ export default function WorkingCapitalLoans() {
       style={{
         background: "#e7dfcf",
         minHeight: "100vh",
-        padding: "80px 0",
+        padding: "clamp(50px,8vw,80px) 0",
       }}
     >
 
@@ -27,9 +27,9 @@ export default function WorkingCapitalLoans() {
             background:
               "linear-gradient(135deg,#062b1f,#00150f)",
 
-            borderRadius: "40px",
+            borderRadius: "24px",
 
-            padding: "80px",
+            padding: "clamp(24px,6vw,80px)",
 
             color: "white",
 
@@ -39,7 +39,7 @@ export default function WorkingCapitalLoans() {
 
           <h1
             style={{
-              fontSize: "72px",
+              fontSize: "clamp(2.4rem,7vw,72px)",
               fontWeight: "800",
               marginBottom: "25px",
             }}
@@ -49,7 +49,7 @@ export default function WorkingCapitalLoans() {
 
           <p
             style={{
-              fontSize: "28px",
+              fontSize: "clamp(1rem,3vw,28px)",
               lineHeight: "1.8",
               color: "#d8d8d8",
             }}
@@ -68,9 +68,9 @@ export default function WorkingCapitalLoans() {
           style={{
             background: "white",
 
-            borderRadius: "35px",
+            borderRadius: "24px",
 
-            padding: "70px",
+            padding: "clamp(24px,5vw,70px)",
 
             boxShadow:
               "0 20px 50px rgba(0,0,0,0.08)",
@@ -81,7 +81,7 @@ export default function WorkingCapitalLoans() {
 
           <h2
             style={{
-              fontSize: "58px",
+              fontSize: "clamp(2rem,6vw,52px)",
               color: "#062b1f",
               marginBottom: "25px",
               fontWeight: "800",
@@ -92,7 +92,7 @@ export default function WorkingCapitalLoans() {
 
           <p
             style={{
-              fontSize: "30px",
+              fontSize: "clamp(1rem,3vw,24px)",
               lineHeight: "1.8",
               color: "#333",
               marginBottom: "60px",
@@ -110,7 +110,7 @@ export default function WorkingCapitalLoans() {
 
           <h2
             style={{
-              fontSize: "52px",
+              fontSize: "clamp(2rem,6vw,52px)",
               color: "#062b1f",
               marginBottom: "30px",
               fontWeight: "800",
@@ -123,7 +123,7 @@ export default function WorkingCapitalLoans() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(300px,1fr))",
+                "repeat(auto-fit,minmax(280px,1fr))",
               gap: "22px",
               marginBottom: "70px",
             }}
@@ -153,7 +153,7 @@ export default function WorkingCapitalLoans() {
 
           <h2
             style={{
-              fontSize: "52px",
+              fontSize: "clamp(2rem,6vw,52px)",
               color: "#062b1f",
               marginBottom: "30px",
               fontWeight: "800",
@@ -166,7 +166,7 @@ export default function WorkingCapitalLoans() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(300px,1fr))",
+                "repeat(auto-fit,minmax(280px,1fr))",
               gap: "22px",
               marginBottom: "70px",
             }}
@@ -196,7 +196,7 @@ export default function WorkingCapitalLoans() {
 
           <h2
             style={{
-              fontSize: "52px",
+              fontSize: "clamp(2rem,6vw,52px)",
               color: "#062b1f",
               marginBottom: "30px",
               fontWeight: "800",
@@ -209,7 +209,7 @@ export default function WorkingCapitalLoans() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(300px,1fr))",
+                "repeat(auto-fit,minmax(280px,1fr))",
               gap: "22px",
               marginBottom: "80px",
             }}
@@ -252,13 +252,13 @@ export default function WorkingCapitalLoans() {
 
                 color: "white",
 
-                padding: "18px 42px",
+                padding: "clamp(14px,3vw,22px) clamp(24px,5vw,48px)",
 
                 borderRadius: "50px",
 
                 textDecoration: "none",
 
-                fontSize: "20px",
+                fontSize: "clamp(1rem,3vw,22px)",
 
                 fontWeight: "700",
 
@@ -282,13 +282,13 @@ export default function WorkingCapitalLoans() {
 
                 color: "#003b2f",
 
-                padding: "18px 42px",
+                padding: "clamp(14px,3vw,22px) clamp(24px,5vw,48px)",
 
                 borderRadius: "50px",
 
                 textDecoration: "none",
 
-                fontSize: "20px",
+                fontSize: "clamp(1rem,3vw,22px)",
 
                 fontWeight: "700",
 

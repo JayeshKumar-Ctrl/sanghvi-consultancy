@@ -11,38 +11,80 @@ import {
 
 export default function UploadUsersPage() {
 
+
   const [users,
   setUsers] =
     useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   const router =
     useRouter();
 
   useEffect(() => {
 
-    fetch(
-      "/api/upload-users"
-    )
+    fetch("/api/upload-users")
 
-      .then((res) =>
-        res.json()
-      )
+      .then((res) => res.json())
 
       .then((data) => {
 
-        if (
-          data.success
-        ) {
+        if (data.success) {
 
-          setUsers(
-            data.users
-          );
+          setUsers(data.users);
 
         }
+
+      })
+      .finally(() => {
+
+        setLoading(false);
 
       });
 
   }, []);
+
+  if (loading) {
+
+    return (
+
+      <div
+        style={{
+
+          minHeight: "100vh",
+
+          display: "flex",
+
+          flexDirection: "column",
+
+          alignItems: "center",
+
+          justifyContent: "center",
+
+          gap: "20px",
+
+          background: "#d9cfbd",
+
+        }}
+      >
+
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading Uploads...
+        </p>
+
+      </div>
+
+    );
+
+  }
 
   return (
 
@@ -56,12 +98,14 @@ export default function UploadUsersPage() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
 
       <button
+
+        className="admin-back-btn"
 
         onClick={() => {
 
@@ -105,7 +149,7 @@ export default function UploadUsersPage() {
         style={{
 
           fontSize:
-            "72px",
+            "clamp(36px,8vw,72px)",
 
           marginBottom:
             "50px",
@@ -136,6 +180,8 @@ export default function UploadUsersPage() {
 
               <div
 
+                className="upload-user-card"
+
                 key={index}
 
                 onClick={() => {
@@ -154,7 +200,7 @@ export default function UploadUsersPage() {
                     "white",
 
                   padding:
-                    "35px",
+                    "clamp(20px,4vw,35px)",
 
                   borderRadius:
                     "30px",
@@ -172,7 +218,7 @@ export default function UploadUsersPage() {
                   style={{
 
                     fontSize:
-                      "38px",
+                      "clamp(24px,5vw,38px)",
 
                     color:
                       "#18392b",
@@ -190,10 +236,12 @@ export default function UploadUsersPage() {
                   style={{
 
                     fontSize:
-                      "22px",
+                      "clamp(16px,3vw,22px)",
 
                     marginTop:
                       "10px",
+
+                    wordBreak: "break-word",
 
                   }}
                 >

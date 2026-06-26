@@ -170,38 +170,34 @@ export default function ConsultationsPage() {
 
       <div
         style={{
-
-          minHeight:
-            "100vh",
-
-          display:
-            "flex",
-
-          alignItems:
-            "center",
-
-          justifyContent:
-            "center",
-
-          fontSize:
-            "42px",
-
-          fontWeight:
-            "700",
-
-          background:
-            "#d9cfbd",
-
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "20px",
+          background: "#d9cfbd",
         }}
       >
 
-        Loading Consultations...
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading Consultations...
+        </p>
 
       </div>
 
     );
 
   }
+  
 
   return (
 
@@ -215,12 +211,14 @@ export default function ConsultationsPage() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
 
       <button
+
+        className="admin-back-btn"
 
         onClick={() => {
 
@@ -264,7 +262,7 @@ export default function ConsultationsPage() {
         style={{
 
           fontSize:
-            "64px",
+            "clamp(34px,8vw,64px)",
 
           marginBottom:
             "40px",
@@ -318,7 +316,7 @@ export default function ConsultationsPage() {
                     "white",
 
                   padding:
-                    "35px",
+                    "clamp(20px,4vw,35px)",
 
                   borderRadius:
                     "28px",
@@ -438,10 +436,15 @@ export default function ConsultationsPage() {
                     marginTop:
                       "20px",
 
+                    flexWrap: 
+                      "wrap",
+
                   }}
                 >
 
                   <button
+
+                    className="consultation-action-btn"
 
                     onClick={() => {
 
@@ -480,6 +483,8 @@ export default function ConsultationsPage() {
                   </button>
 
                   <button
+
+                    className="consultation-action-btn"
 
                     onClick={() => {
 

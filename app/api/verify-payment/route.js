@@ -32,13 +32,47 @@ export async function POST(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     const decoded =
       jwt.verify(
         token,
         process.env.JWT_SECRET
       );
+
+    const existingUser =
+      await User.findById(decoded.id);
+
+    if (!existingUser) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
 
     const body =
       await req.json();
@@ -52,6 +86,29 @@ export async function POST(req) {
       razorpay_signature,
 
     } = body;
+
+    if (
+
+      !razorpay_order_id ||
+
+      !razorpay_payment_id ||
+
+      !razorpay_signature
+
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Missing payment details.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     // CREATE SIGNATURE
 
@@ -91,6 +148,67 @@ export async function POST(req) {
 
     }
 
+    const existingPayment =
+      await Payment.findOne({
+
+        razorpayPaymentId:
+          razorpay_payment_id,
+
+      });
+
+    if (existingPayment) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Payment already processed.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    const existingOrder =
+      await Payment.findOne({
+
+        razorpayOrderId:
+          razorpay_order_id,
+
+      });
+
+    if (existingOrder) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Order already processed.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (existingUser.isPremium) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Premium already activated.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
     // ACTIVATE PREMIUM
 
     const updatedUser =
@@ -108,6 +226,20 @@ export async function POST(req) {
           new: true,
         }
       );
+
+    if (!updatedUser) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "User update failed.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
 
     // SAVE PAYMENT
 
@@ -157,7 +289,7 @@ export async function POST(req) {
       {
         success: false,
         message:
-          "Verification failed",
+          "Internal Server Error",
       },
       {
         status: 500,

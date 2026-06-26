@@ -7,6 +7,8 @@ import {
 import { useRouter }
 from "next/navigation";
 
+import toast from "react-hot-toast";
+
 export default function ForgotPasswordPage() {
 
   const router =
@@ -64,9 +66,15 @@ export default function ForgotPasswordPage() {
         const data =
           await res.json();
 
-        alert(
-          data.message
-        );
+        if (data.success) {
+
+          toast.success(data.message);
+
+        } else {
+
+          toast.error(data.message);
+
+        }
 
         if (
           data.success
@@ -81,6 +89,8 @@ export default function ForgotPasswordPage() {
       } catch (error) {
 
         console.log(error);
+
+        toast.error("Something went wrong. Please try again.");
 
       } finally {
 
@@ -128,9 +138,15 @@ export default function ForgotPasswordPage() {
         const data =
           await res.json();
 
-        alert(
-          data.message
-        );
+        if (data.success) {
+
+          toast.success(data.message);
+
+        } else {
+
+          toast.error(data.message);
+
+        }
 
         // REDIRECT
 
@@ -147,6 +163,8 @@ export default function ForgotPasswordPage() {
       } catch (error) {
 
         console.log(error);
+
+        toast.error("Something went wrong. Please try again.");
 
       } finally {
 
@@ -177,40 +195,60 @@ export default function ForgotPasswordPage() {
           "center",
 
         padding:
-          "30px",
+          "clamp(16px,4vw,30px)",
 
       }}
     >
 
-      <div
-        style={{
+      <form
 
-          width:
-            "100%",
+        onSubmit={(e) => {
 
-          maxWidth:
-            "500px",
+          e.preventDefault();
 
-          background:
-            "white",
+          if (otpSent) {
 
-          borderRadius:
-            "35px",
+            resetPassword();
 
-          padding:
-            "50px",
+          } else {
 
-          boxShadow:
-            "0 10px 30px rgba(0,0,0,0.08)",
+            sendOtp();
+
+          }
 
         }}
+          style={{
+
+            width:
+              "100%",
+
+            maxWidth:
+              "500px",
+
+            background:
+              "white",
+
+            borderRadius:
+              "35px",
+
+            padding:
+              "clamp(24px,5vw,50px)",
+
+            boxShadow:
+              "0 10px 30px rgba(0,0,0,0.08)",
+
+            boxSizing: 
+              "border-box",
+
+          }}
+        
       >
 
         <h1
           style={{
 
             fontSize:
-              "52px",
+              "clamp(34px,8vw,52px)",
 
             marginBottom:
               "10px",
@@ -235,7 +273,7 @@ export default function ForgotPasswordPage() {
               "35px",
 
             fontSize:
-              "18px",
+              "clamp(15px,3vw,18px)",
 
           }}
         >
@@ -249,6 +287,10 @@ export default function ForgotPasswordPage() {
         <input
 
           type="email"
+
+          autoComplete="email"
+
+          required
 
           placeholder="Enter your email"
 
@@ -297,6 +339,12 @@ export default function ForgotPasswordPage() {
 
                 type="text"
 
+                autoComplete="one-time-code"
+
+                inputMode="numeric"
+
+                required
+
                 placeholder="Enter OTP"
 
                 value={otp}
@@ -336,6 +384,10 @@ export default function ForgotPasswordPage() {
               <input
 
                 type="password"
+
+                required
+
+                autoComplete="new-password"
 
                 placeholder="New Password"
 
@@ -384,11 +436,7 @@ export default function ForgotPasswordPage() {
 
         <button
 
-          onClick={
-            otpSent
-              ? resetPassword
-              : sendOtp
-          }
+          type="submit"
 
           disabled={loading}
 
@@ -413,13 +461,14 @@ export default function ForgotPasswordPage() {
               "white",
 
             fontSize:
-              "18px",
+              "clamp(16px,3vw,18px)",
 
             fontWeight:
               "600",
 
-            cursor:
-              "pointer",
+            cursor: loading ? "not-allowed" : "pointer",
+
+            opacity: loading ? 0.7 : 1,
 
           }}
         >
@@ -434,7 +483,31 @@ export default function ForgotPasswordPage() {
 
         </button>
 
-      </div>
+        <p
+          style={{
+            marginTop: "20px",
+            textAlign: "center",
+          }}
+        >
+
+          Remember your password?{" "}
+
+          <span
+            onClick={() => router.push("/login")}
+            style={{
+              color: "#18392b",
+              cursor: "pointer",
+              fontWeight: "600",
+            }}
+          >
+
+            Sign In
+
+          </span>
+
+        </p>
+
+      </form>
 
     </div>
 

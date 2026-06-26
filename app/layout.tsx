@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata , Viewport } from "next";
+
 
 import {
   Geist,
@@ -22,23 +23,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-
   title:
-  "Sanghvi Consultancy Services | AI Accounting & Financial Solutions",
+    "Sanghvi Consultancy Services | AI Accounting & Financial Solutions",
 
   description:
-  "Professional AI-powered accounting, GST filing, tax consultancy, business registration and financial services platform.",
+    "Professional AI-powered accounting, GST filing, tax consultancy, business registration and financial services platform.",
 
   verification: {
     google:
       "ag7859UvtMhRv3kVwSDYxqURvEG1D5gr0A6MNrEIFnA",
   },
 
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#18392b",
 };
 
 export default function RootLayout({
@@ -51,12 +55,24 @@ export default function RootLayout({
 
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
 
       <body className="min-h-full flex flex-col">
 
-        <Toaster position="top-right" />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              borderRadius: "10px",
+              background: "#18392b",
+              color: "#fff",
+              fontSize: "14px",
+            },
+          }}
+        />
 
         {children}
 

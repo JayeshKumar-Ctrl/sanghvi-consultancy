@@ -21,6 +21,7 @@ export async function GET(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "Unauthorized",
         },
@@ -32,7 +33,23 @@ export async function GET(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     const decoded =
       jwt.verify(
@@ -45,10 +62,12 @@ export async function GET(req) {
     const documents =
       await Document.find({
         userId:
-          decoded.userId,
+          decoded.id,
       }).sort({
         createdAt: -1,
       });
+
+    
 
     // CONVERSION FILES
 
@@ -76,6 +95,7 @@ export async function GET(req) {
 
     return Response.json(
       {
+        success: false,
         message:
           "Failed to fetch files",
       },

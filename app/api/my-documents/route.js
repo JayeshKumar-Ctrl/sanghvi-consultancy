@@ -21,6 +21,7 @@ export async function GET(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "Unauthorized",
         },
@@ -32,7 +33,23 @@ export async function GET(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     const decoded =
       jwt.verify(
@@ -44,13 +61,14 @@ export async function GET(req) {
 
     const documents =
       await Document.find({
-
-        userId:
-          decoded.id,
-
-      }).sort({
-        createdAt: -1,
-      });
+        userId: decoded.id,
+      })
+        .select(
+          "fileName category fileUrl createdAt"
+        )
+        .sort({
+          createdAt: -1,
+        });
 
     return Response.json({
 
@@ -66,8 +84,8 @@ export async function GET(req) {
 
     return Response.json(
       {
-        message:
-          "Something went wrong",
+        success: false,
+        message: "Internal server error.",
       },
       {
         status: 500,

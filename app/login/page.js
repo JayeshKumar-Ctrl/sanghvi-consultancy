@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
 
@@ -48,7 +49,7 @@ export default function LoginPage() {
 
       const data = await res.json();
 
-      alert(data.message);
+      toast.success(data.message);
 
       console.log(data);
 
@@ -68,7 +69,7 @@ export default function LoginPage() {
 
       console.log(error);
 
-      alert("Something went wrong");
+      toast.error("Something went wrong");
 
     } finally {
 
@@ -89,8 +90,8 @@ export default function LoginPage() {
             <Image
               src="/logo.png"
               alt="Sanghvi Consultancy"
-              width={125}
-              height={125}
+              width={110}
+              height={110}
               className="object-contain"
 
             />
@@ -103,7 +104,13 @@ export default function LoginPage() {
 
           </div>
 
-          <h1>Sign in</h1>
+          <h1
+            style={{
+              fontSize: "clamp(34px,8vw,52px)",
+            }}
+          >
+            Sign in
+          </h1>
 
           <span className="auth-subtext">
             Use your email and password.
@@ -156,7 +163,7 @@ export default function LoginPage() {
                   color: "#18392b",
                   fontWeight: "600",
                   textDecoration: "none",
-                  fontSize: "14px",
+                  fontSize: "clamp(13px,3vw,15px)",
                 }}
               >
 
@@ -169,6 +176,7 @@ export default function LoginPage() {
             <button
               className="auth-button"
               type="submit"
+              disabled={loading}
             >
 
               {

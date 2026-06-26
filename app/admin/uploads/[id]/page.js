@@ -18,36 +18,78 @@ export default function UserUploads() {
   setUploads] =
     useState([]);
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
 
     if (!params?.id)
       return;
 
-    fetch(
+    fetch(`/api/user-uploads/${params.id}`)
 
-      `/api/user-uploads/${params.id}`
-
-    )
-
-      .then((res) =>
-        res.json()
-      )
+      .then((res) => res.json())
 
       .then((data) => {
 
-        if (
-          data.success
-        ) {
+        if (data.success) {
 
-          setUploads(
-            data.uploads
-          );
+          setUploads(data.uploads);
 
         }
+
+      })
+
+      .finally(() => {
+
+        setLoading(false);
 
       });
 
   }, [params]);
+
+
+  if (loading) {
+
+    return (
+
+      <div
+        style={{
+
+          minHeight: "100vh",
+
+          display: "flex",
+
+          flexDirection: "column",
+
+          alignItems: "center",
+
+          justifyContent: "center",
+
+          gap: "20px",
+
+          background: "#d9cfbd",
+
+        }}
+      >
+
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading User Uploads...
+        </p>
+
+      </div>
+
+    );
+
+  }
+
 
   return (
 
@@ -61,7 +103,7 @@ export default function UserUploads() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
@@ -70,7 +112,7 @@ export default function UserUploads() {
         style={{
 
           fontSize:
-            "60px",
+            "clamp(34px,8vw,60px)",
 
           marginBottom:
             "50px",
@@ -83,115 +125,140 @@ export default function UserUploads() {
       </h1>
 
       {
+        uploads.length === 0 ? (
 
-        uploads.map(
-          (item, index) => (
+          <div
+            style={{
+              background: "white",
+              padding: "30px",
+              borderRadius: "20px",
+            }}
+          >
 
-            <div
+            No uploads found.
 
-              key={index}
+          </div>
 
-              style={{
+        ) : (
 
-                background:
-                  "white",
+          uploads.map(
+            (item, index) => (
 
-                padding:
-                  "30px",
+              <div
 
-                borderRadius:
-                  "30px",
+                className="user-upload-card"
 
-                marginBottom:
-                  "25px",
+                key={index}
 
-                border:
-                  "2px solid #18392b",
+                style={{
 
-              }}
-            >
+                  background:
+                    "white",
 
-              <h2>
+                  padding:
+                    "clamp(20px,4vw,30px)",
 
-                {
-                  item.fileName
-                }
+                  borderRadius:
+                    "30px",
 
-              </h2>
+                  marginBottom:
+                    "25px",
 
-              <p>
+                  border:
+                    "2px solid #18392b",
 
-                Type:
-                {" "}
-
-                {
-                  item.category
-                }
-
-              </p>
-
-              <p>
-
-                Upload Date:
-                {" "}
-
-                {
-
-                  new Date(
-
-                    item.createdAt
-
-                  ).toLocaleString()
-
-                }
-
-              </p>
-
-              <a
-
-                href={
-                  item.fileUrl
-                }
-
-                target="_blank"
+                }}
               >
 
-                <button
-
+                <h2
                   style={{
-
-                    marginTop:
-                      "15px",
-
-                    padding:
-                      "12px 20px",
-
-                    border:
-                      "none",
-
-                    borderRadius:
-                      "12px",
-
-                    background:
-                      "#18392b",
-
-                    color:
-                      "white",
-
-                    cursor:
-                      "pointer",
-
+                    fontSize: "clamp(22px,5vw,32px)",
+                    wordBreak: "break-word",
                   }}
                 >
 
-                  View File
+                  {
+                    item.fileName
+                  }
 
-                </button>
+                </h2>
 
-              </a>
+                <p>
 
-            </div>
+                  Type:
+                  {" "}
 
+                  {
+                    item.category
+                  }
+
+                </p>
+
+                <p>
+
+                  Upload Date:
+                  {" "}
+
+                  {
+
+                    new Date(
+
+                      item.createdAt
+
+                    ).toLocaleString()
+
+                  }
+
+                </p>
+
+                <a
+
+                  href={
+                    item.fileUrl
+                  }
+
+                  target="_blank"
+                >
+
+                  <button
+
+                    className="view-file-btn"
+
+                    style={{
+
+                      marginTop:
+                        "15px",
+
+                      padding:
+                        "12px 20px",
+
+                      border:
+                        "none",
+
+                      borderRadius:
+                        "12px",
+
+                      background:
+                        "#18392b",
+
+                      color:
+                        "white",
+
+                      cursor:
+                        "pointer",
+
+                    }}
+                  >
+
+                    View File
+
+                  </button>
+
+                </a>
+
+              </div>
+
+            )
           )
         )
 

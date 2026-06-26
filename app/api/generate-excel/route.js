@@ -31,6 +31,7 @@ export async function POST(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "Unauthorized",
         },
@@ -42,7 +43,23 @@ export async function POST(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     const decoded =
       jwt.verify(
@@ -55,6 +72,20 @@ export async function POST(req) {
         decoded.id
       );
 
+    if (!user) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
+
     // BODY
 
     const body =
@@ -63,12 +94,15 @@ export async function POST(req) {
     const rows =
       body.rows;
 
-    if (!rows) {
+    if (
+      !Array.isArray(rows) ||
+      rows.length === 0
+    ) {
 
       return Response.json(
         {
-          message:
-            "No rows found",
+          success: false,
+          message: "No rows found.",
         },
         {
           status: 400,
@@ -127,9 +161,34 @@ export async function POST(req) {
         }
       );
 
+    if (!uploadResult?.secure_url) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Cloud upload failed.",
+        },
+        {
+          status: 500,
+        }
+      );
+
+    }
+
     // DELETE LOCAL FILE
 
-    fs.unlinkSync(filePath);
+    try {
+
+      fs.unlinkSync(filePath);
+
+    } catch (err) {
+
+      console.log(
+        "Cleanup failed:",
+        err
+      );
+
+    }
 
     // SAVE TO DOCUMENT COLLECTION
 
@@ -160,14 +219,17 @@ export async function POST(req) {
 
     });
 
-    return Response.json({
+    return Response.json(
+      {
+        success: true,
 
-      success: true,
-
-      excelUrl:
-        uploadResult.secure_url,
-
-    });
+        excelUrl:
+          uploadResult.secure_url,
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 
@@ -175,6 +237,7 @@ export async function POST(req) {
 
     return Response.json(
       {
+        success: false,
         message:
           "Excel generation failed",
       },

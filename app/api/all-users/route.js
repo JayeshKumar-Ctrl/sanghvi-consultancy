@@ -33,24 +33,45 @@ export async function GET(req) {
     const token =
       authHeader.split(" ")[1];
 
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET
-    );
+    const decoded =
+      jwt.verify(
+        token,
+        process.env.JWT_SECRET
+      );
+
+    if (
+      decoded.email !==
+      process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Access denied.",
+        },
+        {
+          status: 403,
+        }
+      );
+
+    }
 
     const users =
       await User.find()
-      .sort({
-        createdAt: -1,
-      });
+        .select("-password")
+        .sort({
+          createdAt: -1,
+        });
 
-    return Response.json({
-
-      success: true,
-
-      users,
-
-    });
+    return Response.json(
+      {
+        success: true,
+        users,
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 
@@ -60,7 +81,7 @@ export async function GET(req) {
       {
         success: false,
         message:
-          "Server error",
+          "Internal Server Error",
       },
       {
         status: 500,

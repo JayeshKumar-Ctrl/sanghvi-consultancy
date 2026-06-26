@@ -18,7 +18,7 @@ export default function LoanAssistancePage() {
         style={{
           maxWidth: "1250px",
           margin: "0 auto",
-          padding: "130px 40px 80px",
+          padding:"clamp(90px,12vw,130px) clamp(16px,4vw,40px) clamp(50px,8vw,80px)",
         }}
       >
 
@@ -26,12 +26,12 @@ export default function LoanAssistancePage() {
 
         <h1
           style={{
-            fontSize: "64px",
+            fontSize: "clamp(2.3rem,8vw,64px)",
+            lineHeight: "1.2",
+            letterSpacing: "-0.03em",
             fontWeight: "800",
             color: "#062b1f",
             marginBottom: "25px",
-            lineHeight: "78px",
-            letterSpacing: "-2px",
           }}
         >
           Loan Assistance
@@ -39,8 +39,8 @@ export default function LoanAssistancePage() {
 
         <p
           style={{
-            fontSize: "22px",
-            lineHeight: "38px",
+            fontSize: "clamp(1rem,3vw,22px)",
+            lineHeight: "1.8",
             color: "#3b3b3b",
             maxWidth: "950px",
             marginBottom: "70px",
@@ -60,9 +60,9 @@ export default function LoanAssistancePage() {
             background:
               "linear-gradient(135deg,#062b1f,#00150f)",
 
-            borderRadius: "35px",
-
-            padding: "60px",
+            padding: "clamp(24px,5vw,60px)",
+            
+            borderRadius: "24px",
 
             color: "white",
 
@@ -75,7 +75,7 @@ export default function LoanAssistancePage() {
 
           <h2
             style={{
-              fontSize: "46px",
+              fontSize: "clamp(2rem,6vw,46px)",
               marginBottom: "40px",
               fontWeight: "800",
             }}
@@ -156,9 +156,9 @@ export default function LoanAssistancePage() {
           style={{
             background: "white",
 
-            borderRadius: "35px",
+            padding: "clamp(24px,5vw,70px)",
 
-            padding: "70px",
+            borderRadius: "24px",
 
             marginTop: "70px",
 
@@ -180,7 +180,7 @@ export default function LoanAssistancePage() {
 
             <h2
               style={{
-                fontSize: "48px",
+                fontSize: "clamp(2rem,6vw,48px)",
                 fontWeight: "800",
                 color: "#062b1f",
                 marginBottom: "25px",
@@ -192,7 +192,7 @@ export default function LoanAssistancePage() {
 
             <p
               style={{
-                fontSize: "32px",
+                fontSize: "clamp(1rem,3vw,24px)",
                 lineHeight: "1.8",
                 color: "#3b3b3b",
               }}
@@ -217,7 +217,7 @@ export default function LoanAssistancePage() {
 
             <h2
               style={{
-                fontSize: "58px",
+                fontSize: "clamp(2rem,7vw,58px)",
                 fontWeight: "800",
                 color: "#062b1f",
                 marginBottom: "30px",
@@ -247,12 +247,12 @@ export default function LoanAssistancePage() {
                   style={{
                     background: "#f7f7f7",
 
-                    padding: "24px 28px",
+                    padding:"clamp(16px,3vw,24px) clamp(18px,4vw,28px)",
+
+                    fontSize:"clamp(1rem,3vw,28px)",
 
                     borderRadius: "18px",
-
-                    fontSize: "28px",
-
+                    
                     fontWeight: "600",
 
                     color: "#222",
@@ -273,7 +273,7 @@ export default function LoanAssistancePage() {
 
             <h2
               style={{
-                fontSize: "48px",
+                fontSize: "clamp(2rem,6vw,48px)",
                 fontWeight: "800",
                 color: "#062b1f",
                 marginBottom: "30px",
@@ -310,11 +310,11 @@ export default function LoanAssistancePage() {
 
                     color: "white",
 
-                    padding: "28px",
+                    padding:"clamp(18px,4vw,28px)",
+
+                    fontSize:"clamp(1rem,3vw,28px)",
 
                     borderRadius: "22px",
-
-                    fontSize: "28px",
 
                     fontWeight: "700",
 
@@ -356,13 +356,13 @@ export default function LoanAssistancePage() {
 
               color: "white",
 
-              padding: "20px 46px",
+              padding:"clamp(14px,3vw,20px) clamp(24px,5vw,46px)",
+
+              fontSize:"clamp(1rem,3vw,22px)",
 
               borderRadius: "60px",
 
               textDecoration: "none",
-
-              fontSize: "22px",
 
               fontWeight: "700",
 
@@ -382,13 +382,13 @@ export default function LoanAssistancePage() {
 
               color: "#062b1f",
 
-              padding: "20px 46px",
+              padding:"clamp(14px,3vw,20px) clamp(24px,5vw,46px)",
+
+              fontSize:"clamp(1rem,3vw,22px)",
 
               borderRadius: "60px",
 
               textDecoration: "none",
-
-              fontSize: "22px",
 
               fontWeight: "700",
             }}
@@ -399,47 +399,6 @@ export default function LoanAssistancePage() {
         </div>
 
       </div>
-
-      <style jsx>{`
-
-        .premium-service-box {
-
-          background: white;
-
-          color: #062b1f;
-
-          padding: 28px 34px;
-
-          border-radius: 22px;
-
-          font-size: 28px;
-
-          font-weight: 700;
-
-          display: flex;
-
-          justify-content: space-between;
-
-          align-items: center;
-
-          transition: 0.35s ease;
-
-          box-shadow:
-            0 10px 30px rgba(0,0,0,0.12);
-
-        }
-
-        .premium-service-box:hover {
-
-          background: #f47c2c;
-
-          color: white;
-
-          transform: translateY(-5px);
-
-        }
-
-      `}</style>
 
       <Footer />
 

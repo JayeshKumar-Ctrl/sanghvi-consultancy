@@ -42,7 +42,7 @@ export default function AccountingServices() {
         style={{
           maxWidth: "1250px",
           margin: "0 auto",
-          padding: "130px 20px 80px",
+          padding: "clamp(90px,12vw,130px) 20px clamp(50px,8vw,80px)",
         }}
       >
 
@@ -55,8 +55,8 @@ export default function AccountingServices() {
             color: "#062b1f",
             marginBottom: "25px",
             lineHeight: "1.2",
-            wordBreak: "break-word",
-            letterSpacing: "-2px",
+            overflowWrap: "anywhere",
+            letterSpacing: "-0.03em",
           }}
         >
           Accounting Services
@@ -86,7 +86,7 @@ export default function AccountingServices() {
 
             borderRadius: "35px",
 
-            padding: "25px",
+            padding: "clamp(20px,4vw,40px)",
 
             color: "white",
 
@@ -154,7 +154,7 @@ export default function AccountingServices() {
 
             borderRadius: "35px",
 
-            padding: "25px",
+            padding: "clamp(24px,5vw,60px)",
 
             marginTop: "70px",
 
@@ -181,7 +181,7 @@ export default function AccountingServices() {
                 color: "#062b1f",
                 marginBottom: "25px",
                 lineHeight: "1.2",
-                wordBreak: "break-word",
+                overflowWrap: "anywhere",
               }}
             >
               What are Accounting Services?
@@ -191,7 +191,7 @@ export default function AccountingServices() {
               style={{
                 fontSize:"clamp(1rem, 4vw, 32px)",
                 lineHeight: "1.8",
-                wordBreak: "break-word",
+                overflowWrap: "anywhere",
                 color: "#3b3b3b",
               }}
             >
@@ -250,7 +250,7 @@ export default function AccountingServices() {
                     fontWeight: "600",
                     color: "#222",
                     lineHeight: "1.5",
-                    wordBreak: "break-word",
+                    overflowWrap: "anywhere",
                   }}
                 >
                   • {item}
@@ -311,7 +311,7 @@ export default function AccountingServices() {
 
                     lineHeight: "1.4",
 
-                    wordBreak: "break-word",
+                    overflowWrap: "anywhere",
 
                     fontWeight: "700",
 
@@ -353,7 +353,7 @@ export default function AccountingServices() {
 
               color: "white",
 
-              padding: "14px 24px",
+              padding: "clamp(14px,3vw,20px) clamp(24px,5vw,46px)",
 
               borderRadius: "60px",
 
@@ -382,7 +382,7 @@ export default function AccountingServices() {
 
               color: "#062b1f",
 
-              padding: "20px 46px",
+              padding: "clamp(14px,3vw,20px) clamp(24px,5vw,46px)",
 
               borderRadius: "60px",
 

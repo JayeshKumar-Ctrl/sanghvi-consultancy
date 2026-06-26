@@ -18,7 +18,7 @@ export default function BusinessRegistrationPage() {
         style={{
           maxWidth: "1250px",
           margin: "0 auto",
-          padding: "130px 40px 80px",
+          padding: "clamp(90px,12vw,130px) clamp(16px,4vw,40px) clamp(50px,8vw,80px)",
         }}
       >
 
@@ -26,12 +26,12 @@ export default function BusinessRegistrationPage() {
 
         <h1
           style={{
-            fontSize: "64px",
+            fontSize: "clamp(2.3rem,8vw,64px)",
+            lineHeight: "1.2",
+            letterSpacing: "-0.03em",
             fontWeight: "800",
             color: "#062b1f",
             marginBottom: "25px",
-            lineHeight: "78px",
-            letterSpacing: "-2px",
           }}
         >
           Business Registration
@@ -39,8 +39,8 @@ export default function BusinessRegistrationPage() {
 
         <p
           style={{
-            fontSize: "22px",
-            lineHeight: "38px",
+            fontSize: "clamp(1rem,3vw,22px)",
+            lineHeight: "1.8",
             color: "#3b3b3b",
             maxWidth: "950px",
             marginBottom: "70px",
@@ -60,9 +60,9 @@ export default function BusinessRegistrationPage() {
             background:
               "linear-gradient(135deg,#062b1f,#00150f)",
 
-            borderRadius: "35px",
+            borderRadius: "24px",
 
-            padding: "60px",
+            padding: "clamp(24px,5vw,60px)",
 
             color: "white",
 
@@ -75,7 +75,7 @@ export default function BusinessRegistrationPage() {
 
           <h2
             style={{
-              fontSize: "46px",
+              fontSize: "clamp(2rem,6vw,46px)",
               marginBottom: "40px",
               fontWeight: "800",
             }}
@@ -185,9 +185,9 @@ export default function BusinessRegistrationPage() {
           style={{
             background: "white",
 
-            borderRadius: "35px",
+            borderRadius: "24px",
 
-            padding: "70px",
+            padding: "clamp(24px,5vw,70px)",
 
             marginTop: "70px",
 
@@ -209,7 +209,7 @@ export default function BusinessRegistrationPage() {
 
             <h2
               style={{
-                fontSize: "48px",
+                fontSize: "clamp(2rem,6vw,48px)",
                 fontWeight: "800",
                 color: "#062b1f",
                 marginBottom: "25px",
@@ -221,7 +221,7 @@ export default function BusinessRegistrationPage() {
 
             <p
               style={{
-                fontSize: "32px",
+                fontSize: "clamp(1rem,3vw,24px)",
                 lineHeight: "1.8",
                 color: "#3b3b3b",
               }}
@@ -245,7 +245,7 @@ export default function BusinessRegistrationPage() {
 
             <h2
               style={{
-                fontSize: "58px",
+                fontSize: "clamp(2rem,7vw,58px)",
                 fontWeight: "800",
                 color: "#062b1f",
                 marginBottom: "30px",
@@ -275,11 +275,11 @@ export default function BusinessRegistrationPage() {
                   style={{
                     background: "#f7f7f7",
 
-                    padding: "24px 28px",
+                    padding:"clamp(16px,3vw,24px) clamp(18px,4vw,28px)",
+
+                    fontSize:"clamp(1rem,3vw,28px)",
 
                     borderRadius: "18px",
-
-                    fontSize: "28px",
 
                     fontWeight: "600",
 
@@ -301,7 +301,7 @@ export default function BusinessRegistrationPage() {
 
             <h2
               style={{
-                fontSize: "48px",
+                fontSize: "clamp(2rem,6vw,48px)",
                 fontWeight: "800",
                 color: "#062b1f",
                 marginBottom: "30px",
@@ -338,11 +338,11 @@ export default function BusinessRegistrationPage() {
 
                     color: "white",
 
-                    padding: "28px",
+                    padding:"clamp(18px,4vw,28px)",
+
+                    fontSize:"clamp(1rem,3vw,28px)",
 
                     borderRadius: "22px",
-
-                    fontSize: "28px",
 
                     fontWeight: "700",
 
@@ -384,13 +384,13 @@ export default function BusinessRegistrationPage() {
 
               color: "white",
 
-              padding: "20px 46px",
+              padding:"clamp(14px,3vw,20px) clamp(24px,5vw,46px)",
+
+              fontSize:"clamp(1rem,3vw,22px)",
 
               borderRadius: "60px",
 
               textDecoration: "none",
-
-              fontSize: "22px",
 
               fontWeight: "700",
 
@@ -410,13 +410,13 @@ export default function BusinessRegistrationPage() {
 
               color: "#062b1f",
 
-              padding: "20px 46px",
+              padding:"clamp(14px,3vw,20px) clamp(24px,5vw,46px)",
+
+              fontSize:"clamp(1rem,3vw,22px)",
 
               borderRadius: "60px",
 
               textDecoration: "none",
-
-              fontSize: "22px",
 
               fontWeight: "700",
             }}
@@ -436,11 +436,18 @@ export default function BusinessRegistrationPage() {
 
           color: #062b1f;
 
-          padding: 28px 34px;
+          padding:
+            clamp(18px,3vw,28px)
+            clamp(20px,4vw,34px);
+
+          font-size:
+            clamp(1rem,3vw,28px);
+
+          flex-wrap: wrap;
+
+          gap: 12px;
 
           border-radius: 22px;
-
-          font-size: 28px;
 
           font-weight: 700;
 

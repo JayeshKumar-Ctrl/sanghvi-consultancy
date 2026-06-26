@@ -30,6 +30,20 @@ export async function POST(req) {
 
     const token =
       formData.get("token");
+    
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Unauthorized.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     if (!file) {
 
@@ -42,8 +56,36 @@ export async function POST(req) {
           status: 400,
         }
       );
-
     }
+
+    const allowedTypes = [
+
+        "application/pdf",
+
+        "image/jpeg",
+
+        "image/png",
+
+        "image/jpg",
+
+      ];
+
+      if (
+        !allowedTypes.includes(file.type)
+      ) {
+
+        return Response.json(
+          {
+            success: false,
+            message:
+              "Only PDF, JPG, JPEG and PNG files are allowed.",
+          },
+          {
+            status: 400,
+          }
+        );
+
+      }
 
     // VERIFY USER
 
@@ -52,6 +94,22 @@ export async function POST(req) {
         token,
         process.env.JWT_SECRET
       );
+
+    if (
+      !["Gujarati", "Hindi", "Marwadi"].includes(language)
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid language.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     // FILE BUFFER
 
@@ -100,7 +158,7 @@ export async function POST(req) {
       await Conversion.create({
 
         userId:
-          decoded.userId,
+          decoded.id,
 
         fileName:
           file.name,
@@ -122,7 +180,7 @@ export async function POST(req) {
     await Document.create({
 
       userId:
-        decoded.userId,
+        decoded.id,
 
       fileName:
         file.name,
@@ -138,13 +196,20 @@ export async function POST(req) {
 
     });
 
-    return Response.json({
+    return Response.json(
+      {
+        success: true,
 
-      success: true,
+        message:
+          "File uploaded successfully.",
 
-      conversion,
+        conversion,
+      },
+      {
+        status: 201,
+      }
 
-    });
+    );
 
   } catch (error) {
 
@@ -152,6 +217,7 @@ export async function POST(req) {
 
     return Response.json(
       {
+        success: false,
         message:
           "Conversion upload failed",
       },

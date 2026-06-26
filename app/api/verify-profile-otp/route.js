@@ -11,45 +11,108 @@ export async function POST(req) {
     const otp =
       body.otp;
 
-    const storedOtp =
+    if (!email || !otp) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Email and OTP are required.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    const storedData =
       global.otpStore[email];
 
+    if (!storedData) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "OTP not found.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
     if (
-      storedOtp !== otp
+
+      Date.now() >
+
+      storedData.expiresAt
+
     ) {
 
-      return Response.json({
+      delete global.otpStore[email];
 
-        success: false,
+      return Response.json(
+        {
+          success: false,
+          message:
+            "OTP has expired.",
+        },
+        {
+          status: 400,
+        }
+      );
 
-        message:
-          "Wrong OTP",
+    }
 
-      });
+    if (
+
+      storedData.otp !== otp
+
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Invalid OTP.",
+        },
+        {
+          status: 400,
+        }
+      );
 
     }
 
     delete global.otpStore[email];
 
-    return Response.json({
-
-      success: true,
-
-    });
+    return Response.json(
+      {
+        success: true,
+        message:
+          "OTP verified successfully.",
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 
     console.log(error);
 
-    return Response.json({
-
-      success: false,
-
-      message:
-        "Verification failed",
-
-    });
-
+    return Response.json(
+      {
+        success: false,
+        message:
+          "Internal server error.",
+      },
+      {
+        status: 500,
+      }
+    );
   }
 
 }

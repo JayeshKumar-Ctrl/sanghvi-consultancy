@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Footer from "../components/Footer";
 import Image from "next/image";
+import toast from "react-hot-toast";
 
 export default function SignupPage() {
 
@@ -43,7 +44,7 @@ export default function SignupPage() {
 
       const data = await res.json();
 
-      alert(data.message);
+      toast.success(data.message);
 
       console.log(data);
 
@@ -57,7 +58,7 @@ export default function SignupPage() {
 
       console.log(error);
 
-      alert("Something went wrong");
+      toast.error("Something went wrong");
 
     } finally {
 
@@ -77,9 +78,9 @@ export default function SignupPage() {
             <Image
                 src="/logo.png"
                 alt="Sanghvi Consultancy"
-                width={125}
-                height={125}
-                className="object-contain"
+                width={110}
+                height={110}
+                className="auth-logo-image"
               
               />
 
@@ -91,7 +92,13 @@ export default function SignupPage() {
 
           </div>
 
-          <h1>Create your account</h1>
+          <h1
+            style={{
+              fontSize: "clamp(34px,8vw,52px)",
+            }}
+          >
+            Create your account
+          </h1>
 
           <span className="auth-subtext">
             Takes under 30 seconds.
@@ -108,6 +115,7 @@ export default function SignupPage() {
               <input
                 type="text"
                 name="fullName"
+                autoComplete="name"
                 placeholder="Enter your full name"
                 onChange={handleChange}
                 required
@@ -119,6 +127,7 @@ export default function SignupPage() {
 
               <input
                 type="email"
+                autoComplete="email"
                 name="email"
                 placeholder="Enter your email"
                 onChange={handleChange}
@@ -132,6 +141,7 @@ export default function SignupPage() {
               <input
                 type="password"
                 name="password"
+                autoComplete="new-password"
                 placeholder="Enter your password"
                 onChange={handleChange}
                 required
@@ -144,6 +154,7 @@ export default function SignupPage() {
               <input
                 type="text"
                 name="company"
+                autoComplete="company"
                 placeholder="Enter company name"
                 onChange={handleChange}
               />
@@ -155,7 +166,11 @@ export default function SignupPage() {
               <input
                 type="text"
                 name="phone"
+                autoComplete="tel"
                 placeholder="Enter phone number"
+                inputMode="numeric"
+                pattern="[0-9]{10}"
+                maxLength={10}
                 onChange={handleChange}
                 required
               />
@@ -164,6 +179,7 @@ export default function SignupPage() {
             <button
               className="auth-button"
               type="submit"
+              disabled={loading}
             >
               {
                 loading

@@ -8,7 +8,7 @@ export default function ProjectReports() {
       style={{
         background: "#e7dfcf",
         minHeight: "100vh",
-        padding: "80px 0",
+        padding: "clamp(50px,8vw,80px) 0",
       }}
     >
 
@@ -27,9 +27,9 @@ export default function ProjectReports() {
             background:
               "linear-gradient(135deg,#062b1f,#00150f)",
 
-            borderRadius: "40px",
+            borderRadius: "24px",
 
-            padding: "80px",
+            padding: "clamp(24px,6vw,80px)",
 
             color: "white",
 
@@ -42,7 +42,7 @@ export default function ProjectReports() {
 
           <h1
             style={{
-              fontSize: "72px",
+              fontSize: "clamp(2.4rem,7vw,72px)",
               fontWeight: "800",
               marginBottom: "25px",
               lineHeight: "1.1",
@@ -53,7 +53,7 @@ export default function ProjectReports() {
 
           <p
             style={{
-              fontSize: "28px",
+              fontSize: "clamp(1rem,3vw,28px)",
               lineHeight: "1.8",
               color: "#d8d8d8",
               maxWidth: "1000px",
@@ -73,9 +73,9 @@ export default function ProjectReports() {
           style={{
             background: "white",
 
-            borderRadius: "35px",
+            borderRadius: "24px",
 
-            padding: "70px",
+            padding: "clamp(24px,5vw,70px)",
 
             boxShadow:
               "0 20px 50px rgba(0,0,0,0.08)",
@@ -95,7 +95,7 @@ export default function ProjectReports() {
 
             <h2
               style={{
-                fontSize: "52px",
+                fontSize: "clamp(2rem,6vw,52px)",
                 color: "#062b1f",
                 fontWeight: "800",
                 marginBottom: "25px",
@@ -106,7 +106,7 @@ export default function ProjectReports() {
 
             <p
               style={{
-                fontSize: "30px",
+                fontSize: "clamp(1rem,3vw,24px)",
                 lineHeight: "1.8",
                 color: "#333",
               }}
@@ -132,7 +132,7 @@ export default function ProjectReports() {
 
             <h2
               style={{
-                fontSize: "52px",
+                fontSize: "clamp(2rem,6vw,52px)",
                 color: "#062b1f",
                 fontWeight: "800",
                 marginBottom: "35px",
@@ -182,7 +182,7 @@ export default function ProjectReports() {
 
             <h2
               style={{
-                fontSize: "52px",
+                fontSize: "clamp(2rem,6vw,52px)",
                 color: "#062b1f",
                 fontWeight: "800",
                 marginBottom: "35px",
@@ -239,13 +239,13 @@ export default function ProjectReports() {
 
                 color: "white",
 
-                padding: "22px 48px",
+                padding: "clamp(14px,3vw,22px) clamp(24px,5vw,48px)",
+
+                fontSize: "clamp(1rem,3vw,22px)",
 
                 borderRadius: "60px",
 
                 textDecoration: "none",
-
-                fontSize: "22px",
 
                 fontWeight: "700",
 
@@ -266,13 +266,13 @@ export default function ProjectReports() {
 
                 color: "#062b1f",
 
-                padding: "22px 48px",
+                padding: "clamp(14px,3vw,22px) clamp(24px,5vw,48px)",
+
+                fontSize: "clamp(1rem,3vw,22px)",
 
                 borderRadius: "60px",
 
                 textDecoration: "none",
-
-                fontSize: "22px",
 
                 fontWeight: "700",
               }}

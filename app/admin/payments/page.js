@@ -88,32 +88,27 @@ export default function PaymentsPage() {
 
       <div
         style={{
-
-          minHeight:
-            "100vh",
-
-          display:
-            "flex",
-
-          alignItems:
-            "center",
-
-          justifyContent:
-            "center",
-
-          fontSize:
-            "42px",
-
-          fontWeight:
-            "700",
-
-          background:
-            "#d9cfbd",
-
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "20px",
+          background: "#d9cfbd",
         }}
       >
 
-        Loading Payments...
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading Payments...
+        </p>
 
       </div>
 
@@ -133,12 +128,14 @@ export default function PaymentsPage() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
 
       <button
+
+        className="admin-back-btn"
 
         onClick={() => {
 
@@ -182,7 +179,7 @@ export default function PaymentsPage() {
         style={{
 
           fontSize:
-            "64px",
+            "clamp(34px,8vw,64px)",
 
           marginBottom:
             "40px",
@@ -207,7 +204,7 @@ export default function PaymentsPage() {
                 "white",
 
               padding:
-                "40px",
+                 "clamp(20px,5vw,40px)",
 
               borderRadius:
                 "28px",
@@ -228,6 +225,8 @@ export default function PaymentsPage() {
 
               <div
 
+                className="payment-card"
+
                 key={item._id}
 
                 style={{
@@ -236,7 +235,7 @@ export default function PaymentsPage() {
                     "white",
 
                   padding:
-                    "35px",
+                    "clamp(20px,4vw,35px)",
 
                   borderRadius:
                     "28px",
@@ -253,16 +252,15 @@ export default function PaymentsPage() {
                   }
                 </h2>
 
-                <p>
+                <p
+                  style={{
+                    wordBreak: "break-word",
+                  }}
+                >
 
-                  <strong>
-                    Email:
-                  </strong>
+                  <strong>Email:</strong>{" "}
 
-                  {" "}
-                  {
-                    item.email
-                  }
+                  {item.email}
 
                 </p>
 
@@ -281,28 +279,38 @@ export default function PaymentsPage() {
 
                 <p>
 
-                  <strong>
-                    Amount:
-                  </strong>
+                  <strong>Amount:</strong>{" "}
 
-                  {" "}
-                  ₹
-                  {
-                    item.amount
-                  }
+                  <span
+                    style={{
+                      color: "#18392b",
+                      fontWeight: "700",
+                      fontSize: "20px",
+                    }}
+                  >
+                    ₹{item.amount}
+                  </span>
 
                 </p>
 
                 <p>
 
-                  <strong>
-                    Status:
-                  </strong>
+                  <strong>Status:</strong>{" "}
 
-                  {" "}
-                  {
-                    item.paymentStatus
-                  }
+                  <span
+                    style={{
+                      color:
+                        item.paymentStatus === "Success"
+                          ? "green"
+                          : item.paymentStatus === "Failed"
+                          ? "red"
+                          : "#f59e0b",
+
+                      fontWeight: "700",
+                    }}
+                  >
+                    {item.paymentStatus}
+                  </span>
 
                 </p>
 

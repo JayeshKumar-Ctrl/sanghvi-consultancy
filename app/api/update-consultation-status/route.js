@@ -22,6 +22,7 @@ export async function PUT(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "Unauthorized",
         },
@@ -33,12 +34,46 @@ export async function PUT(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
 
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET
-    );
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
+
+    const decoded =
+      jwt.verify(
+        token,
+        process.env.JWT_SECRET
+      );
+
+    if (
+      decoded.email !==
+      process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Access denied.",
+        },
+        {
+          status: 403,
+        }
+      );
+
+    }
 
     // BODY
 
@@ -49,6 +84,42 @@ export async function PUT(req) {
       consultationId,
       status,
     } = body;
+
+    if (
+      !consultationId ||
+      !status
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Missing required fields.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (
+      status !== "Approved" &&
+      status !== "Rejected"
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Invalid status.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     // UPDATE STATUS
 
@@ -66,6 +137,21 @@ export async function PUT(req) {
         }
 
       );
+
+    if (!updatedConsultation) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Consultation not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
 
     return Response.json(
       {
@@ -85,8 +171,9 @@ export async function PUT(req) {
 
     return Response.json(
       {
+        success: false,
         message:
-          "Something went wrong",
+          "Internal server error.",
       },
       {
         status: 500,

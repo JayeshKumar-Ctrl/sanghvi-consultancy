@@ -113,10 +113,37 @@ ScannerPage() {
 
       <div
         style={{
+
           minHeight: "100vh",
+
+          display: "flex",
+
+          flexDirection: "column",
+
+          alignItems: "center",
+
+          justifyContent: "center",
+
+          gap: "20px",
+
           background: "#d9cfbd",
+
         }}
-      />
+      >
+
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "22px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading AI Scanner...
+        </p>
+
+      </div>
 
     );
 
@@ -160,15 +187,18 @@ ScannerPage() {
       try {
 
         const token =
-          localStorage.getItem(
-            "token"
-          );
+          localStorage.getItem("token");
 
         const orderRes =
           await fetch(
             "/api/create-order",
             {
               method: "POST",
+
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+
             }
           );
 
@@ -411,7 +441,7 @@ ScannerPage() {
               background:
                 "white",
 
-              padding: "50px",
+              padding: "clamp(25px,5vw,50px)",
 
               borderRadius:
                 "24px",
@@ -419,11 +449,17 @@ ScannerPage() {
               textAlign:
                 "center",
 
-              width: "420px",
+              width: "100%",
+              maxWidth: "420px",
+
             }}
           >
 
-            <h1>
+            <h1
+              style={{
+                fontSize: "clamp(30px,7vw,42px)",
+              }}
+            >
               Unlock AI Scanner
             </h1>
 
@@ -439,6 +475,7 @@ ScannerPage() {
             <h2
               style={{
                 marginTop: "20px",
+                fontSize: "clamp(28px,6vw,38px)",
               }}
             >
               ₹299/month
@@ -451,6 +488,8 @@ ScannerPage() {
               }
 
               style={{
+
+                width: "100%",
 
                 marginTop: "30px",
 
@@ -555,7 +594,7 @@ ScannerPage() {
 
           <h1
             style={{
-              fontSize: "36px",
+              fontSize: "clamp(28px,6vw,36px)",
               marginBottom: "12px",
             }}
           >
@@ -566,7 +605,7 @@ ScannerPage() {
 
           <p
             style={{
-              fontSize: "20px",
+              fontSize: "clamp(16px,4vw,20px)",
             }}
           >
 
@@ -641,7 +680,7 @@ ScannerPage() {
             display: "grid",
 
             gridTemplateColumns:
-              "repeat(auto-fit, minmax(320px, 1fr))",
+              "repeat(auto-fit, minmax(280px, 1fr))",
 
             gap: "30px",
           }}

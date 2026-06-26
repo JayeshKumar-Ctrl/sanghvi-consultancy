@@ -20,18 +20,40 @@ export async function GET(req) {
 
     if (!token) {
 
-      return Response.json({
-
-        success: false,
-
-      });
+      return Response.json(
+        {
+          success: false,
+          message: "Unauthorized.",
+        },
+        {
+          status: 401,
+        }
+      );
 
     }
 
-    jwt.verify(
-      token,
-      process.env.JWT_SECRET
-    );
+    const decoded =
+      jwt.verify(
+        token,
+        process.env.JWT_SECRET
+      );
+
+    if (
+      decoded.email !==
+      process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Access denied.",
+        },
+        {
+          status: 403,
+        }
+      );
+
+    }
 
     const uploads =
       await Document.find()
@@ -39,23 +61,29 @@ export async function GET(req) {
         createdAt: -1,
       });
 
-    return Response.json({
-
-      success: true,
-
-      uploads,
-
-    });
+    return Response.json(
+      {
+        success: true,
+        uploads,
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 
     console.log(error);
 
-    return Response.json({
-
-      success: false,
-
-    });
+    return Response.json(
+      {
+        success: false,
+        message: "Internal server error.",
+      },
+      {
+        status: 500,
+      }
+    );
 
   }
 

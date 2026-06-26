@@ -16,7 +16,7 @@ export default function TaxFilingPage() {
         style={{
           maxWidth: "1250px",
           margin: "0 auto",
-          padding: "130px 40px 80px",
+          padding: "clamp(80px,10vw,130px) clamp(16px,5vw,40px) clamp(40px,6vw,80px)",
         }}
       >
 
@@ -24,11 +24,11 @@ export default function TaxFilingPage() {
 
         <h1
           style={{
-            fontSize: "64px",
+            fontSize: "clamp(2.5rem,7vw,64px)",
             fontWeight: "800",
             color: "#062b1f",
             marginBottom: "25px",
-            lineHeight: "78px",
+            lineHeight: "1.15",
             letterSpacing: "-2px",
           }}
         >
@@ -37,8 +37,8 @@ export default function TaxFilingPage() {
 
         <p
           style={{
-            fontSize: "22px",
-            lineHeight: "38px",
+            fontSize: "clamp(1rem,3vw,22px)",
+            lineHeight: "1.8",
             color: "#3b3b3b",
             maxWidth: "950px",
             marginBottom: "70px",
@@ -55,8 +55,8 @@ export default function TaxFilingPage() {
             style={{
                 background:
                 "linear-gradient(135deg,#062b1f,#00150f)",
-                borderRadius: "35px",
-                padding: "60px",
+                borderRadius: "24px",
+                padding: "clamp(24px,5vw,60px)",
                 color: "white",
                 marginBottom: "70px",
                 boxShadow:
@@ -66,7 +66,7 @@ export default function TaxFilingPage() {
 
             <h2
                 style={{
-                fontSize: "46px",
+                fontSize: "clamp(2rem,6vw,46px)",
                 marginBottom: "40px",
                 fontWeight: "800",
                 }}
@@ -161,9 +161,9 @@ export default function TaxFilingPage() {
             style={{
                 background: "white",
 
-                borderRadius: "35px",
+                borderRadius: "24px",
 
-                padding: "70px",
+                padding: "clamp(24px,5vw,70px)",
 
                 marginTop: "70px",
 
@@ -185,7 +185,7 @@ export default function TaxFilingPage() {
 
                 <h2
                 style={{
-                    fontSize: "48px",
+                    fontSize: "clamp(2rem,6vw,48px)",
                     fontWeight: "800",
                     color: "#062b1f",
                     marginBottom: "25px",
@@ -197,7 +197,7 @@ export default function TaxFilingPage() {
 
                 <p
                 style={{
-                    fontSize: "32px",
+                    fontSize: "clamp(1rem,3vw,24px)",
                     lineHeight: "1.8",
                     color: "#3b3b3b",
                 }}
@@ -220,7 +220,7 @@ export default function TaxFilingPage() {
 
                 <h2
                 style={{
-                    fontSize: "58px",
+                    fontSize: "clamp(2rem,7vw,58px)",
                     fontWeight: "800",
                     color: "#062b1f",
                     marginBottom: "30px",
@@ -249,9 +249,9 @@ export default function TaxFilingPage() {
                     key={index}
                     style={{
                         background: "#f7f7f7",
-                        padding: "24px 28px",
+                        padding: "clamp(16px,3vw,24px) clamp(18px,4vw,28px)",
                         borderRadius: "18px",
-                        fontSize: "28px",
+                        fontSize: "clamp(1rem,3vw,28px)",
                         fontWeight: "600",
                         color: "#222",
                     }}
@@ -271,7 +271,7 @@ export default function TaxFilingPage() {
 
                 <h2
                 style={{
-                    fontSize: "48px",
+                    fontSize: "clamp(2rem,6vw,48px)",
                     fontWeight: "800",
                     color: "#062b1f",
                     marginBottom: "30px",
@@ -306,11 +306,11 @@ export default function TaxFilingPage() {
 
                         color: "white",
 
-                        padding: "28px",
+                        padding: "clamp(18px,4vw,28px)",
 
                         borderRadius: "22px",
 
-                        fontSize: "28px",
+                        fontSize: "clamp(1rem,3vw,28px)",
 
                         fontWeight: "700",
 
@@ -350,10 +350,10 @@ export default function TaxFilingPage() {
               background:
                 "linear-gradient(135deg,#003b2f,#001f1a)",
               color: "white",
-              padding: "20px 46px",
+              padding: "clamp(14px,3vw,20px) clamp(22px,5vw,46px)",
               borderRadius: "60px",
               textDecoration: "none",
-              fontSize: "22px",
+              fontSize: "clamp(1rem,3vw,22px)",
               fontWeight: "700",
               boxShadow:
                 "0 15px 40px rgba(0,0,0,0.15)",

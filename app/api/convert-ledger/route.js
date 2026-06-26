@@ -57,7 +57,25 @@ export async function POST(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+
+        ? authHeader.split(" ")[1]
+
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     const decoded =
       jwt.verify(
@@ -72,6 +90,20 @@ export async function POST(req) {
         decoded.id
       );
 
+    if (!user) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
+
     // BODY
 
     const body =
@@ -83,6 +115,45 @@ export async function POST(req) {
       fileName,
       mimeType,
     } = body;
+
+    if (
+      !fileUrl ||
+      !fileName ||
+      !language
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Missing required fields.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (
+      ![
+        "Gujarati",
+        "Hindi",
+        "Marwadi",
+      ].includes(language)
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid language.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
 
     console.log("ORIGINAL FILE:", {
       fileUrl,
@@ -296,6 +367,27 @@ FORMAT:
     const lastBrace =
       cleaned.lastIndexOf("}");
 
+    if (
+
+      firstBrace === -1 ||
+
+      lastBrace === -1
+
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "AI returned invalid JSON.",
+        },
+        {
+          status: 500,
+        }
+      );
+
+    }
+
     const safeJson =
       cleaned.substring(
         firstBrace,
@@ -478,7 +570,18 @@ FORMAT:
 
     // DELETE LOCAL FILE
 
-    fs.unlinkSync(excelPath);
+    try {
+
+      fs.unlinkSync(excelPath);
+
+    } catch (err) {
+
+      console.log(
+        "Temp file cleanup failed:",
+        err
+      );
+
+    }
 
     // UPDATE DATABASE
 
@@ -501,8 +604,7 @@ FORMAT:
         },
 
         {
-          returnDocument:
-            "after",
+          new: true,
         }
 
       );
@@ -553,6 +655,7 @@ FORMAT:
 
     return Response.json(
       {
+        success: false,
         message:
           "Conversion failed",
       },

@@ -1,5 +1,7 @@
-import nodemailer from
-"nodemailer";
+import User from "@/models/User";
+import connectDB from "@/lib/mongodb";
+import nodemailer from "nodemailer";
+
 
 global.otpStore =
   global.otpStore || {};
@@ -14,24 +16,72 @@ export async function POST(req) {
     const email =
       body.email;
 
+    if (!email) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Email is required.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid email address.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    await connectDB();
+
+    const user =
+      await User.findOne({
+        email,
+      });
+
+    if (!user) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
+
+    }
+
     const otp =
       Math.floor(
         100000 +
         Math.random() * 900000
       ).toString();
 
-    global.otpStore[email] =
-      otp;
-    
-    console.log(
-        "Generated OTP:",
-        otp
-    );
+    global.otpStore[email] = {
 
-    console.log(
-      "OTP:",
-      otp
-    );
+      otp,
+
+      expiresAt:
+        Date.now() + 5 * 60 * 1000,
+
+    };
 
     const transporter =
       nodemailer.createTransport({
@@ -62,22 +112,29 @@ export async function POST(req) {
 
       html: `
 
-        <h2>
-          Your OTP is:
-          ${otp}
-        </h2>
+        <h2>Sanghvi Consultancy Services</h2>
+
+        <p>Your OTP for profile verification is:</p>
+
+        <h1>${otp}</h1>
+
+        <p>This OTP will expire in 5 minutes.</p>
+
+        <p>Please do not share it with anyone.</p>
 
       `,
 
     });
 
-    return Response.json({
-
-      success: true,
-
-      otp,
-
-    });
+    return Response.json(
+      {
+        success: true,
+        message: "OTP sent successfully.",
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 

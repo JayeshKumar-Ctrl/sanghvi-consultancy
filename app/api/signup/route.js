@@ -8,13 +8,72 @@ export async function POST(req) {
 
     const body = await req.json();
 
-    const {
-      fullName,
-      email,
-      password,
-      company,
-      phone,
-    } = body;
+    const fullName = body.fullName?.trim();
+    const email = body.email?.trim().toLowerCase();
+    const password = body.password;
+    const company = body.company?.trim();
+    const phone = body.phone?.trim();
+
+    if (!fullName || !email || !password || !phone) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Please fill all required fields.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    const emailRegex =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid email address.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (password.length < 6) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Password must be at least 6 characters.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Enter a valid 10-digit phone number.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     // CHECK EXISTING USER
     const existingUser = await User.findOne({
@@ -49,19 +108,44 @@ export async function POST(req) {
     return Response.json(
       {
         success: true,
-        message: "User created successfully",
-        user,
+
+        message:
+          "User created successfully",
+
+        user: {
+
+          _id: user._id,
+
+          fullName:
+            user.fullName,
+
+          email:
+            user.email,
+
+          company:
+            user.company,
+
+          phone:
+            user.phone,
+
+        },
+
       },
       {
         status: 201,
       }
     );
+
+
   } catch (error) {
     console.log(error);
 
     return Response.json(
       {
-        message: "Something went wrong",
+        success: false,
+
+        message:
+          "Internal server error.",
       },
       {
         status: 500,

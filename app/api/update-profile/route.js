@@ -13,21 +13,39 @@ export async function PUT(req) {
 
     await connectDB();
 
+    const authHeader =
+      req.headers.get("authorization");
+
+    if (!authHeader) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Unauthorized.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
+
     const token =
-      req.headers
-      .get("authorization")
-      ?.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
 
     if (!token) {
 
-      return Response.json({
-
-        success: false,
-
-        message:
-          "Unauthorized",
-
-      });
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
 
     }
 
@@ -37,23 +55,43 @@ export async function PUT(req) {
         process.env.JWT_SECRET
       );
 
-    console.log(
-      "DECODED TOKEN:",
-      decoded
-    );
-
     const body =
       await req.json();
 
-    console.log(
-      "BODY:",
-      body
-    );
+    if (
+      body.companyName &&
+      body.companyName.length > 100
+    ) {
 
-    console.log(
-      "USER ID:",
-      decoded.id
-    );
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Company name is too long.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (
+      !body.fullName ||
+      body.fullName.trim() === ""
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Full name is required.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
 
     const updatedUser =
       await User.findByIdAndUpdate(
@@ -63,10 +101,10 @@ export async function PUT(req) {
         {
 
           fullName:
-            body.fullName,
+            body.fullName.trim(),
 
           company:
-            body.companyName,
+            body.companyName?.trim() || "",
 
         },
 
@@ -80,44 +118,57 @@ export async function PUT(req) {
 
       );
 
-    console.log(
-      "UPDATED USER:",
-      updatedUser
-    );
-
     if (!updatedUser) {
 
-      return Response.json({
-
-        success: false,
-
-        message:
-          "User not found",
-
-      });
+      return Response.json(
+        {
+          success: false,
+          message: "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
 
     }
 
-    return Response.json({
+    return Response.json(
+      {
+        success: true,
 
-      success: true,
+        user: {
 
-      user: updatedUser,
+          _id: updatedUser._id,
 
-    });
+          fullName: updatedUser.fullName,
+
+          email: updatedUser.email,
+
+          company: updatedUser.company,
+
+          phone: updatedUser.phone,
+
+        },
+
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 
     console.log(error);
 
-    return Response.json({
-
-      success: false,
-
-      message:
-        "Update failed",
-
-    });
+    return Response.json(
+      {
+        success: false,
+        message: "Internal server error.",
+      },
+      {
+        status: 500,
+      }
+    );
 
   }
 

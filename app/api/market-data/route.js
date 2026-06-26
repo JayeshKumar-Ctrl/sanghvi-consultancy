@@ -113,9 +113,13 @@ export async function GET() {
     return Response.json(
       {
         success: false,
+        message:
+          "Internal server error.",
+        
       },
       {
         status: 500,
+        
       }
     );
 

@@ -17,6 +17,35 @@ export async function POST(req) {
       newPassword,
     } = body;
 
+    if (!email || !otp || !newPassword) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "All fields are required.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (newPassword.length < 6) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Password must be at least 6 characters.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
     const user =
       await User.findOne({
         email,
@@ -26,6 +55,7 @@ export async function POST(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "User not found",
         },
@@ -44,6 +74,7 @@ export async function POST(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "Invalid OTP",
         },
@@ -63,6 +94,7 @@ export async function POST(req) {
 
       return Response.json(
         {
+          success: false,
           message:
             "OTP expired",
         },
@@ -92,11 +124,18 @@ export async function POST(req) {
 
     await user.save();
 
-    return Response.json({
-      success: true,
-      message:
-        "Password updated",
-    });
+    return Response.json(
+      {
+        success: true,
+        message:
+          "Password Updated Successfully.",
+      },
+
+      {
+        status: 200,
+      }
+
+    );
 
   } catch (error) {
 
@@ -104,8 +143,9 @@ export async function POST(req) {
 
     return Response.json(
       {
+        success: false,
         message:
-          "Something went wrong",
+          "Internal Server Error.",
       },
       {
         status: 500,

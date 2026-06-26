@@ -23,14 +23,15 @@ export async function PUT(req) {
 
     if (!token) {
 
-      return Response.json({
-
-        success: false,
-
-        message:
-          "Unauthorized",
-
-      });
+      return Response.json(
+        {
+          success: false,
+          message: "Unauthorized.",
+        },
+        {
+          status: 401,
+        }
+      );
 
     }
 
@@ -43,6 +44,41 @@ export async function PUT(req) {
     const body =
       await req.json();
 
+    if (
+      !body.currentPassword ||
+      !body.newPassword
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "Current password and new password are required.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
+    if (
+      body.newPassword.length < 6
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message:
+            "New password must be at least 6 characters.",
+        },
+        {
+          status: 400,
+        }
+      );
+
+    }
+
     const user =
       await User.findById(
         decoded.id
@@ -50,14 +86,15 @@ export async function PUT(req) {
 
     if (!user) {
 
-      return Response.json({
-
-        success: false,
-
-        message:
-          "User not found",
-
-      });
+      return Response.json(
+        {
+          success: false,
+          message: "User not found.",
+        },
+        {
+          status: 404,
+        }
+      );
 
     }
 
@@ -72,14 +109,33 @@ export async function PUT(req) {
 
     if (!isMatch) {
 
-      return Response.json({
+      return Response.json(
+        {
+          success: false,
+          message: "Current password is incorrect.",
+        },
+        {
+          status: 401,
+        }
+      );
 
-        success: false,
+    }
 
-        message:
-          "Current password incorrect",
+    if (
+      body.currentPassword ===
+      body.newPassword
+    ) {
 
-      });
+      return Response.json(
+        {
+          success: false,
+          message:
+            "New password must be different from the current password.",
+        },
+        {
+          status: 400,
+        }
+      );
 
     }
 
@@ -97,24 +153,31 @@ export async function PUT(req) {
 
     await user.save();
 
-    return Response.json({
-
-      success: true,
-
-    });
+    return Response.json(
+      {
+        success: true,
+        message:
+          "Password changed successfully.",
+      },
+      {
+        status: 200,
+      }
+    );
 
   } catch (error) {
 
     console.log(error);
 
-    return Response.json({
-
-      success: false,
-
-      message:
-        "Password change failed",
-
-    });
+    return Response.json(
+      {
+        success: false,
+        message:
+          "Internal server error.",
+      },
+      {
+        status: 500,
+      }
+    );
 
   }
 

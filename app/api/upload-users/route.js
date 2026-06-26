@@ -4,14 +4,84 @@ import connectDB from
 import Document from
 "@/models/Document";
 
-export async function GET() {
+import jwt from "jsonwebtoken";
+
+export async function GET(req) {
 
   try {
 
     await connectDB();
 
+    const authHeader =
+      req.headers.get("authorization");
+
+    if (!authHeader) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Unauthorized.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
+
+    const token =
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
+
+    const decoded =
+      jwt.verify(
+        token,
+        process.env.JWT_SECRET
+      );
+
+    if (
+
+      decoded.email !==
+      process.env.NEXT_PUBLIC_ADMIN_EMAIL
+
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Access denied.",
+        },
+        {
+          status: 403,
+        }
+      );
+
+    }
+
     const uploads =
-      await Document.find();
+      await Document.find(
+        {},
+        {
+          userId: 1,
+          uploadedBy: 1,
+          userEmail: 1,
+        }
+      );
 
     const groupedUsers = {};
 
@@ -29,15 +99,12 @@ export async function GET() {
 
         }
 
-        if (
-          !groupedUsers[
-            item.userId
-          ]
-        ) {
+        const key =
+          item.userId.toString();
 
-          groupedUsers[
-            item.userId
-          ] = {
+        if (!groupedUsers[key]) {
+
+          groupedUsers[key] = {
 
             userId:
               item.userId,
@@ -70,11 +137,16 @@ export async function GET() {
 
     console.log(error);
 
-    return Response.json({
-
-      success: false,
-
-    });
+    return Response.json(
+      {
+        success: false,
+        message:
+          "Internal server error.",
+      },
+      {
+        status: 500,
+      }
+    );
 
   }
 

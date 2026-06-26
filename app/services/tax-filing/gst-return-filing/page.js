@@ -10,7 +10,7 @@ export default function GSTReturnFiling() {
       style={{
         background: "#e7dfcf",
         minHeight: "100vh",
-        padding: "80px 0",
+        padding: "clamp(50px,8vw,80px) 0",
       }}
     >
 
@@ -29,9 +29,9 @@ export default function GSTReturnFiling() {
             background:
               "linear-gradient(135deg,#062b1f,#00150f)",
 
-            borderRadius: "40px",
+            borderRadius: "24px",
 
-            padding: "80px",
+            padding: "clamp(24px,6vw,80px)",
 
             color: "white",
 
@@ -41,7 +41,8 @@ export default function GSTReturnFiling() {
 
           <h1
             style={{
-              fontSize: "72px",
+              fontSize: "clamp(2.4rem,7vw,72px)",
+              lineHeight: "1.1",
               fontWeight: "800",
               marginBottom: "25px",
             }}
@@ -51,7 +52,7 @@ export default function GSTReturnFiling() {
 
           <p
             style={{
-              fontSize: "28px",
+              fontSize: "clamp(1rem,3vw,28px)",
               lineHeight: "1.8",
               color: "#d8d8d8",
             }}
@@ -69,9 +70,9 @@ export default function GSTReturnFiling() {
           style={{
             background: "white",
 
-            borderRadius: "35px",
+            borderRadius: "24px",
 
-            padding: "70px",
+            padding: "clamp(24px,5vw,70px)",
 
             boxShadow:
               "0 20px 50px rgba(0,0,0,0.08)",
@@ -80,7 +81,7 @@ export default function GSTReturnFiling() {
 
           <h2
             style={{
-              fontSize: "58px",
+              fontSize: "clamp(2rem,6vw,58px)",
               color: "#062b1f",
               marginBottom: "25px",
               fontWeight: "800",
@@ -91,7 +92,7 @@ export default function GSTReturnFiling() {
 
           <p
             style={{
-              fontSize: "30px",
+              fontSize: "clamp(1rem,3vw,24px)",
               lineHeight: "1.8",
               color: "#333",
               marginBottom: "60px",
@@ -106,7 +107,7 @@ export default function GSTReturnFiling() {
 
           <h2
             style={{
-              fontSize: "52px",
+              fontSize: "clamp(2rem,6vw,52px)",
               color: "#062b1f",
               marginBottom: "30px",
               fontWeight: "800",
@@ -149,7 +150,7 @@ export default function GSTReturnFiling() {
 
           <h2
             style={{
-              fontSize: "52px",
+              fontSize: "clamp(2rem,6vw,52px)",
               color: "#062b1f",
               marginBottom: "30px",
               fontWeight: "800",
@@ -162,7 +163,7 @@ export default function GSTReturnFiling() {
             style={{
               display: "grid",
               gridTemplateColumns:
-                "repeat(auto-fit,minmax(300px,1fr))",
+                "repeat(auto-fit,minmax(250px,1fr))",
               gap: "22px",
               marginBottom: "80px",
             }}

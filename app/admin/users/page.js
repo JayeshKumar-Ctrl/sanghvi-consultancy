@@ -124,31 +124,34 @@ export default function UsersPage() {
       <div
         style={{
 
-          minHeight:
-            "100vh",
+          minHeight: "100vh",
 
-          display:
-            "flex",
+          display: "flex",
 
-          alignItems:
-            "center",
+          flexDirection: "column",
 
-          justifyContent:
-            "center",
+          alignItems: "center",
 
-          fontSize:
-            "42px",
+          justifyContent: "center",
 
-          fontWeight:
-            "700",
+          gap: "20px",
 
-          background:
-            "#d9cfbd",
+          background: "#d9cfbd",
 
         }}
       >
 
-        Loading Users...
+        <div className="loader"></div>
+
+        <p
+          style={{
+            fontSize: "24px",
+            fontWeight: "600",
+            color: "#18392b",
+          }}
+        >
+          Loading Users...
+        </p>
 
       </div>
 
@@ -168,12 +171,14 @@ export default function UsersPage() {
           "#d9cfbd",
 
         padding:
-          "60px",
+          "clamp(20px,5vw,60px)",
 
       }}
     >
 
       <button
+
+        className="admin-back-btn"
 
         onClick={() => {
 
@@ -220,7 +225,7 @@ export default function UsersPage() {
         style={{
 
           fontSize:
-            "64px",
+            "clamp(34px,8vw,64px)",
 
           marginBottom:
             "40px",
@@ -239,6 +244,8 @@ export default function UsersPage() {
 
           <div
 
+            className="user-card"
+
             key={item._id}
 
             style={{
@@ -247,7 +254,7 @@ export default function UsersPage() {
                 "white",
 
               padding:
-                "35px",
+                "clamp(20px,4vw,35px)",
 
               borderRadius:
                 "28px",
@@ -262,7 +269,7 @@ export default function UsersPage() {
               style={{
 
                 fontSize:
-                  "34px",
+                  "clamp(24px,5vw,34px)",
 
                 marginBottom:
                   "10px",
@@ -274,42 +281,58 @@ export default function UsersPage() {
 
             </h2>
 
-            <p>
-              <strong>
-                Email:
-              </strong>
-              {" "}
+            <p
+              style={{
+                marginTop: "8px",
+                wordBreak: "break-word",
+              }}
+            >
+              <strong>Email:</strong>{" "}
               {item.email}
             </p>
 
-            <p>
-              <strong>
-                Phone:
-              </strong>
-              {" "}
+            <p
+              style={{
+                marginTop: "8px",
+              }}
+            >
+              <strong>Phone:</strong>{" "}
               {item.phone}
             </p>
 
-            <p>
-              <strong>
-                Company:
-              </strong>
-              {" "}
-              {
-                item.company ||
-                "N/A"
-              }
+            <p
+              style={{
+                marginTop: "8px",
+              }}
+            >
+              <strong>Company:</strong>{" "}
+              {item.company || "N/A"}
             </p>
 
-            <p>
-              <strong>
-                Plan:
-              </strong>
-              {" "}
-              {item.planType}
+            <p
+              style={{
+                marginTop: "8px",
+              }}
+            >
+              <strong>Plan:</strong>{" "}
+
+              <span
+                style={{
+                  color:
+                    item.planType === "Premium"
+                      ? "green"
+                      : "#18392b",
+                  fontWeight: "700",
+                }}
+              >
+                {item.planType}
+              </span>
+
             </p>
 
             <button
+
+              className="user-plan-btn"
 
               onClick={async () => {
 

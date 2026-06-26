@@ -22,6 +22,8 @@ export async function GET(req) {
 
       return Response.json(
         {
+
+          success: false,
           message:
             "Unauthorized",
         },
@@ -33,7 +35,23 @@ export async function GET(req) {
     }
 
     const token =
-      authHeader.split(" ")[1];
+      authHeader.startsWith("Bearer ")
+        ? authHeader.split(" ")[1]
+        : null;
+
+    if (!token) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Invalid token.",
+        },
+        {
+          status: 401,
+        }
+      );
+
+    }
 
     // VERIFY TOKEN
 
@@ -47,16 +65,18 @@ export async function GET(req) {
 
     const consultations =
       await Consultation.find({
-
-        userId:
-          decoded.id,
-
-      }).sort({
-        createdAt: -1,
-      });
+        userId: decoded.id,
+      })
+        .select(
+          "fullName email phone service message status createdAt"
+        )
+        .sort({
+          createdAt: -1,
+        });
 
     return Response.json(
       {
+        success: true,
         consultations,
       },
       {
@@ -70,8 +90,10 @@ export async function GET(req) {
 
     return Response.json(
       {
-        message:
-          "Something went wrong",
+
+        success: false,
+        message: "Internal server error.",
+
       },
       {
         status: 500,

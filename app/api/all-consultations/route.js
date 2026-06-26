@@ -3,6 +3,8 @@ import connectDB from "@/lib/mongodb";
 import Consultation from
   "@/models/Consultation";
 
+import User from "@/models/User";
+
 import jwt from "jsonwebtoken";
 
 export async function GET(req) {
@@ -22,8 +24,9 @@ export async function GET(req) {
 
       return Response.json(
         {
-          message:
-            "Unauthorized",
+          success: false,
+          message:"Unauthorized",
+
         },
         {
           status: 401,
@@ -41,13 +44,37 @@ export async function GET(req) {
         process.env.JWT_SECRET
       );
 
+    const adminUser =
+      await User.findById(decoded.id);
+
+    if (
+      !adminUser ||
+      adminUser.email !==
+        process.env.NEXT_PUBLIC_ADMIN_EMAIL
+    ) {
+
+      return Response.json(
+        {
+          success: false,
+          message: "Access denied.",
+        },
+        {
+          status: 403,
+        }
+      );
+
+    }
+
     // FETCH CONSULTATIONS
 
     const consultations =
       await Consultation.find()
-      .sort({
-        createdAt: -1,
-      });
+        .select(
+          "fullName email phone service message status createdAt"
+        )
+        .sort({
+          createdAt: -1,
+        });
 
     return Response.json(
       {
@@ -65,8 +92,9 @@ export async function GET(req) {
 
     return Response.json(
       {
+        success: false,
         message:
-          "Something went wrong",
+          "Internal server error.",
       },
       {
         status: 500,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   AreaChart,
@@ -13,6 +14,8 @@ import {
 } from "recharts";
 
 export default function SIPCalculator() {
+
+  const router = useRouter();
 
   const [monthly, setMonthly] =
     useState(15000);
@@ -27,6 +30,9 @@ export default function SIPCalculator() {
   setIsLoggedIn] =
     useState(false);
 
+  const [chartHeight, setChartHeight] =
+    useState(350);
+
   useEffect(() => {
 
     const token =
@@ -37,6 +43,36 @@ export default function SIPCalculator() {
       setIsLoggedIn(true);
 
     }
+
+  }, []);
+
+  useEffect(() => {
+
+    const updateHeight = () => {
+
+      setChartHeight(
+        window.innerWidth < 768
+          ? 250
+          : 350
+      );
+
+    };
+
+    updateHeight();
+
+    window.addEventListener(
+      "resize",
+      updateHeight
+    );
+
+    return () => {
+
+      window.removeEventListener(
+        "resize",
+        updateHeight
+      );
+
+    };
 
   }, []);
 
@@ -285,11 +321,7 @@ export default function SIPCalculator() {
 
           <ResponsiveContainer
             width="100%"
-            height={
-              window.innerWidth < 768
-                ? 250
-                : 350
-            }
+            height={chartHeight}
           >
 
             <AreaChart data={data}>
